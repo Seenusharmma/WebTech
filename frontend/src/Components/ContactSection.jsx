@@ -102,7 +102,7 @@ const Contact = () => {
               whileHover={{ scale: 1.08 }}
               whileTap={{ scale: 0.95 }}
             >
-              {submitted ? "Message Ready!" : "Save Message"}
+              {submitted ? "Message Ready!" : "Send Message"}
             </motion.button>
 
             <motion.button
