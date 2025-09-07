@@ -7,7 +7,7 @@ app.use(cors());
 app.use(express.json());
 
 // ✅ MongoDB Connection
-mongoose.connect("mongodb+srv://roshansharma7250_db_user:AHeEzPUF1pqF1XwQ@cluster0.foitgj8.mongodb.net/", {
+mongoose.connect("mongodb+srv://roshansharma7250_db_user:AHeEzPUF1pqF1XwQ@cluster0.foitgj8.mongodb.net/webtech", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
