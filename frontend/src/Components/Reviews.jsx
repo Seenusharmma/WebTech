@@ -2,7 +2,8 @@ import React, { useState, useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 
 // 🔹 API base URL (adjust if backend runs elsewhere)
-const API_URL = "http://localhost:5000/api/reviews";
+// const API_URL = "http://localhost:5000/api/reviews";
+const API_URL = "https://web-tech-q3bf.onrender.com/api/reviews";
 
 const Reviews = () => {
   const [reviews, setReviews] = useState([]);

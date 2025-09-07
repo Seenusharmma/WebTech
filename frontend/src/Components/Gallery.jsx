@@ -18,9 +18,9 @@ const images = [
     link: "https://www.snatchers.in",
   },
   {
-    src: "https://media.istockphoto.com/id/2092028381/photo/ai-image-creation-technology-man-use-ai-software-on-a-laptop-to-generate-images-showcasing-a.webp?a=1&b=1&s=612x612&w=0&k=20&c=1aoPeThJIYG5ueX3di0rbNq3Dh1l3vipraPtXGh2OtE=",
-    title: "4",
-    link: "",
+    src: "https://i.ibb.co/whPNYYXX/Screenshot-2025-09-07-094013.png",
+    title: "General Marketplace",
+    link: "https://www.cgumarketplace.com",
   },
   {
     src: "https://images.unsplash.com/photo-1522124624696-7ea32eb9592c?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fGdhbGF4eXxlbnwwfHwwfHx8MA%3D%3D",
