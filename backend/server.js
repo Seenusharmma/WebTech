@@ -7,7 +7,7 @@ app.use(cors());
 app.use(express.json());
 
 // ✅ MongoDB Connection
-mongoose.connect("mongodb+srv://roshansharma404error:YZxYf55Io4jBpgXk@cluster0.t6gnssl.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0", {
+mongoose.connect("mongodb+srv://roshansharma7250_db_user:AHeEzPUF1pqF1XwQ@cluster0.foitgj8.mongodb.net/", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });

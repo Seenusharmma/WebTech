@@ -89,7 +89,7 @@ export default function Footer() {
           whileInView={{ opacity: 1 }}
           transition={{ delay: 0.7, duration: 1 }}
         >
-          {["Home", "About Us", "Services", "Gallery", "Reviews", "Contact"].map(
+          {["Home", "About Us", "Services", "Projects", "Reviews", "Contact"].map(
             (item, i) => (
               <motion.li
                 key={i}
