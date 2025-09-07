@@ -9,7 +9,7 @@ const Contact = () => {
     setForm({ ...form, [e.target.name]: e.target.value });
 
   const handleSendWhatsApp = () => {
-    const phoneNumber = "91XXXXXXXXXX"; // replace with your WhatsApp number
+    const phoneNumber = "917752067196"; // replace with your WhatsApp number
     const message = `Hello, my name is ${form.name}. My email is ${form.email}. Message: ${form.message}`;
     const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(
       message
@@ -20,7 +20,7 @@ const Contact = () => {
   const handleSendEmail = () => {
     const subject = "New Contact Form Message";
     const body = `Hello, my name is ${form.name}. My email is ${form.email}. Message: ${form.message}`;
-    window.location.href = `mailto:swainniharika27@gmail.com?subject=${encodeURIComponent(
+    window.location.href = `mailto:roshansharma7250@gmail.com?subject=${encodeURIComponent(
       subject
     )}&body=${encodeURIComponent(body)}`;
   };
@@ -97,6 +97,7 @@ const Contact = () => {
 
           <div className="flex flex-col md:flex-row gap-8">
             <motion.button
+            onClick={handleSendEmail}
               type="submit"
               className="w-full py-3 rounded-xl bg-gradient-to-r from-purple-500 via-pink-500 to-blue-500 hover:scale-105 transition-transform duration-300 font-semibold shadow-lg"
               whileHover={{ scale: 1.08 }}
@@ -129,7 +130,7 @@ const Contact = () => {
           </div>
           <div className="bg-gray-800 p-6 rounded-2xl shadow-lg hover:scale-105 transition-transform duration-300">
             <h3 className="font-semibold text-lg text-purple-400 mb-2">Phone</h3>
-            <p className="text-gray-300">+91 123 456 7890</p>
+            <p className="text-gray-300">+91 77520 67196</p>
           </div>
           <div className="bg-gray-800 p-6 rounded-2xl shadow-lg hover:scale-105 transition-transform duration-300">
             <h3 className="font-semibold text-lg text-purple-400 mb-2">
