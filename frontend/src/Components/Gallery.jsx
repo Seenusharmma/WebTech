@@ -3,19 +3,19 @@ import { motion } from "framer-motion";
 
 const images = [
   {
-    src: "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8d2Vic2l0ZXN8ZW58MHx8MHx8fDA%3D",
-    title: "1",
-    link: "",
+    src: "https://i.ibb.co/FqnddVff/Screenshot-2025-09-07-084241.png",
+    title: "E-Commerce Website",
+    link: "https://mycart-three.vercel.app",
   },
   {
-    src: "https://plus.unsplash.com/premium_photo-1721922203081-4b1bbf3f9265?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fHdlYnNpdGVzfGVufDB8fDB8fHww",
-    title: "2",
-    link: "",
+    src: "https://i.ibb.co/CspKgfzL/Screenshot-2025-09-07-084332.png",
+    title: "Construction Website",
+    link: "https://construct-rose.vercel.app",
   },
   {
-    src: "https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8Z2FsYXh5fGVufDB8fDB8fHww",
-    title: "3",
-    link: "",
+    src: "https://i.ibb.co/YFQYKCPD/Screenshot-2025-09-07-085436.png",
+    title: "E-Commerce",
+    link: "https://www.snatchers.in",
   },
   {
     src: "https://media.istockphoto.com/id/2092028381/photo/ai-image-creation-technology-man-use-ai-software-on-a-laptop-to-generate-images-showcasing-a.webp?a=1&b=1&s=612x612&w=0&k=20&c=1aoPeThJIYG5ueX3di0rbNq3Dh1l3vipraPtXGh2OtE=",
@@ -45,7 +45,7 @@ const Gallery = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
         >
-          Our Gallery
+          Our Projects
         </motion.h2>
 
         <motion.p
