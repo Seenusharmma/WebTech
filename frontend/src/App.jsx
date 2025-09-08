@@ -10,6 +10,10 @@ import Review from './Pages/Review'
 import Contact from './Pages/Contact'
 import Footer from './Components/Footer.jsx'
 import ServiceDetail from './Pages/ServiceDetail.jsx'
+import FigmaDesigns from './Pages/FigmaDesigns.jsx'
+import WebDevelopment from './Pages/WebDevelopment.jsx'
+import AppDevelopment from './Pages/AppDevelopment.jsx'
+import GraphicsDesign from './Pages/GraphicsDesign.jsx'
 
 const App = () => {
   return (
@@ -23,6 +27,11 @@ const App = () => {
           <Route path='/gallery' element={<Gallery/>}/>
           <Route path='/reviews' element={<Review/>}/>
           <Route path='/contact' element={<Contact/>}/>
+          {/* Details page routing */}
+            <Route path="/figma-designs" element={<FigmaDesigns />} />
+            <Route path="/web-development" element={<WebDevelopment />} />
+            <Route path="/app-development" element={<AppDevelopment />} />
+            <Route path="/graphics-design" element={<GraphicsDesign />} />
         </Routes>
         <Footer/>
     </div>
