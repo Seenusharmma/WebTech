@@ -28,7 +28,7 @@ const Navbar = () => {
           className="text-3xl font-extrabold bg-gradient-to-r from-pink-500 via-purple-400 to-blue-500 bg-clip-text text-transparent drop-shadow-[0_0_12px_#9333ea]"
           whileHover={{ scale: 1.1, textShadow: "0px 0px 20px #a855f7" }}
         >
-          .WebTech
+          WebUi
         </motion.h1>
 
         {/* Desktop Menu */}

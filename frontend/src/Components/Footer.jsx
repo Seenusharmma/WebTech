@@ -45,7 +45,7 @@ export default function Footer() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            .WebTech
+            WebUi
           </motion.h2>
           <motion.p
             className="mt-4 text-gray-300 text-base md:text-lg max-w-2xl mx-auto"
