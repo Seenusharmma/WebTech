@@ -1,0 +1,6 @@
+# Allow all search engines to crawl everything
+User-agent: *
+Disallow:
+
+# Sitemap URL (replace with your domain)
+Sitemap: https://www.webui.in/sitemap.xml
