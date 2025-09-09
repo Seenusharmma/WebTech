@@ -20,7 +20,7 @@ const Contact = () => {
   const handleSendEmail = () => {
     const subject = "New Contact Form Message";
     const body = `Hello, my name is ${form.name}. My email is ${form.email}. Message: ${form.message}`;
-    window.location.href = `mailto:roshansharma7250@gmail.com?subject=${encodeURIComponent(
+    window.location.href = `mailto:webuisolution@gmail.com?subject=${encodeURIComponent(
       subject
     )}&body=${encodeURIComponent(body)}`;
   };
@@ -126,7 +126,7 @@ const Contact = () => {
         >
           <div className="bg-gray-800 p-6 rounded-2xl shadow-lg hover:scale-105 transition-transform duration-300">
             <h3 className="font-semibold text-lg text-purple-400 mb-2">Email</h3>
-            <p className="text-gray-300">contact@webtech.com</p>
+            <p className="text-gray-300">webuisolution@gmail.com</p>
           </div>
           <div className="bg-gray-800 p-6 rounded-2xl shadow-lg hover:scale-105 transition-transform duration-300">
             <h3 className="font-semibold text-lg text-purple-400 mb-2">Phone</h3>

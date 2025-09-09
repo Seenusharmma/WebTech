@@ -3,10 +3,10 @@ import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedin } from "react-icons/fa"
 
 export default function Footer() {
   const socialLinks = [
-    { icon: <FaFacebookF />, url: "#" },
-    { icon: <FaTwitter />, url: "#" },
-    { icon: <FaInstagram />, url: "#" },
-    { icon: <FaLinkedin />, url: "#" },
+    { icon: <FaFacebookF />, url: "https://www.facebook.com/people/WebUi/61580214405199/" },
+    { icon: <FaTwitter />, url: "https://x.com/WebuiStudio" },
+    { icon: <FaInstagram />, url: "https://www.instagram.com/webui.build/" },
+    { icon: <FaLinkedin />, url: "https://www.linkedin.com/in/roshan-sharma70/" }, // In feture when we gonna start hiring for our bulding team then that time we create a fresh one Linkdin Profile
   ];
 
   return (
@@ -89,7 +89,7 @@ export default function Footer() {
           whileInView={{ opacity: 1 }}
           transition={{ delay: 0.7, duration: 1 }}
         >
-          {["Home", "About Us", "Services", "Projects", "Reviews", "Contact"].map(
+          {/* {["Home", "About Us", "Services", "Projects", "Reviews", "Contact"].map(
             (item, i) => (
               <motion.li
                 key={i}
@@ -99,7 +99,7 @@ export default function Footer() {
                 {item}
               </motion.li>
             )
-          )}
+          )} */}
         </motion.ul>
 
         {/* Bottom Text */}
@@ -109,7 +109,7 @@ export default function Footer() {
           whileInView={{ opacity: 1 }}
           transition={{ delay: 1, duration: 1 }}
         >
-          © {new Date().getFullYear()} .WebTech — All rights reserved.
+          © {new Date().getFullYear()} WebUi — All rights reserved.
         </motion.div>
       </div>
     </footer>
