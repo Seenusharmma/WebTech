@@ -1,9 +1,30 @@
+// src/components/Reviews.jsx
 import React, { useState, useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 
-// 🔹 API base URL (adjust if backend runs elsewhere)
-// const API_URL = "http://localhost:5000/api/reviews";
 const API_URL = "https://web-tech-q3bf.onrender.com/api/reviews";
+
+// ✅ Dummy reviews (always shown, backend reviews come on top)
+const dummyReviews = [
+  {
+    id: "dummy1",
+    name: "Rahul Sharma",
+    role: "CEO, Creative Minds",
+    feedback: "The team delivered our project on time with outstanding quality!",
+  },
+  {
+    id: "dummy2",
+    name: "Priya Patel",
+    role: "Marketing Head, Bright Ads",
+    feedback: "Fantastic UI/UX design, it really boosted our brand image.",
+  },
+  {
+    id: "dummy3",
+    name: "Amit Verma",
+    role: "Founder, EduTech Hub",
+    feedback: "They built a scalable and responsive platform for our startup.",
+  },
+];
 
 const Reviews = () => {
   const [reviews, setReviews] = useState([]);
@@ -11,8 +32,6 @@ const Reviews = () => {
   const [showForm, setShowForm] = useState(false);
 
   const containerRef = useRef(null);
-  const [scrollWidth, setScrollWidth] = useState(0);
-  const [scrollLeft, setScrollLeft] = useState(0);
 
   // 🔹 Fetch reviews on load
   useEffect(() => {
@@ -23,23 +42,12 @@ const Reviews = () => {
     try {
       const res = await fetch(API_URL);
       const data = await res.json();
-      setReviews(data);
+      setReviews([...dummyReviews, ...data]);
     } catch (error) {
       console.error("Error fetching reviews:", error);
+      setReviews(dummyReviews);
     }
   };
-
-  useEffect(() => {
-    const container = containerRef.current;
-    if (!container) return;
-    const handleScroll = () => setScrollLeft(container.scrollLeft);
-    container.addEventListener("scroll", handleScroll);
-    setScrollWidth(container.scrollWidth - container.clientWidth);
-
-    return () => container.removeEventListener("scroll", handleScroll);
-  }, [reviews]);
-
-  const scrollProgress = scrollWidth ? scrollLeft / scrollWidth : 0;
 
   const handleChange = (e) =>
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -52,11 +60,14 @@ const Reviews = () => {
         const res = await fetch(API_URL, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ ...form, avatar: "/images/default-avatar.jpg" }),
+          body: JSON.stringify({
+            ...form,
+            avatar: "/images/default-avatar.jpg",
+          }),
         });
 
         const savedReview = await res.json();
-        setReviews([savedReview, ...reviews]);
+        setReviews([savedReview, ...reviews]); // Add new review on top
         setForm({ name: "", role: "", feedback: "" });
         setShowForm(false);
       } catch (error) {
@@ -64,6 +75,28 @@ const Reviews = () => {
       }
     }
   };
+
+  // 🔹 Auto sliding effect
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+
+    const slideInterval = setInterval(() => {
+      // Scroll by 1 card width
+      const cardWidth = container.querySelector("div")?.offsetWidth || 300;
+      if (
+        container.scrollLeft + container.offsetWidth >=
+        container.scrollWidth
+      ) {
+        // Reset to start when reaching end
+        container.scrollTo({ left: 0, behavior: "smooth" });
+      } else {
+        container.scrollBy({ left: cardWidth + 24, behavior: "smooth" }); // +24px for gap
+      }
+    }, 3000); // slide every 3 sec
+
+    return () => clearInterval(slideInterval);
+  }, [reviews]);
 
   return (
     <section className="bg-gray-900 text-white py-20 px-5 md:px-20">
@@ -134,14 +167,15 @@ const Reviews = () => {
           </motion.form>
         )}
 
+        {/* ✅ Review Cards */}
         <div className="relative">
           <div
             ref={containerRef}
-            className="flex overflow-x-auto space-x-6 py-6 px-2 scroll-smooth scrollbar-hide"
+            className="flex overflow-x-auto space-x-6 py-6 px-2 scroll-smooth no-scrollbar"
           >
             {reviews.map((review, index) => (
               <div
-                key={review._id || index}
+                key={review._id || review.id || index}
                 className="relative min-w-[280px] max-w-[320px] flex-shrink-0"
               >
                 <motion.div
