@@ -41,7 +41,7 @@ export default function FullScreenCarousel() {
               style={{ backgroundImage: `url(${slide.image})` }}
             >
               {/* Overlay */}
-              <div className="absolute inset-0 bg-black/50"></div>
+              <div className="absolute "></div>
               {/* Content (kept for future if you add titles/subtitles) */}
               <div className="relative z-10 text-center text-white px-4">
                 {slide.title && (
