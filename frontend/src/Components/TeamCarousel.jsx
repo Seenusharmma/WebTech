@@ -68,7 +68,7 @@ export default function TeamCarousel() {
               <h3 className="mt-4 text-xl font-semibold text-gray-800">
                 {member.name}
               </h3>
-              <p className="text-gray-500">{member.position}</p>
+              <p className="text-gray-600">{member.position}</p>
             </div>
           </SwiperSlide>
         ))}

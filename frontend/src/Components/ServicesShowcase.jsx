@@ -12,7 +12,7 @@ const services = [
   },
   {
     id: 2,
-    title: "WE DEVELOPE",
+    title: "WE DEVELOP",
     description:
       "Content management system plays a key role in bring the right visitors to the site. We develop custom content management system.",
     image: "https://images.pexels.com/photos/6424590/pexels-photo-6424590.jpeg", //
