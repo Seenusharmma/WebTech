@@ -1,5 +1,11 @@
 @import "tailwindcss";
 
+.body {
+  background: linear-gradient(to bottom, #000000, #1e1b4b, #000000);
+  color: #ffffff;
+}
+
+
 /* Hide scrollbar but keep scrolling */
 .no-scrollbar::-webkit-scrollbar {
   display: none;
