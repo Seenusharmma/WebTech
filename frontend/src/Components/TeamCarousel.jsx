@@ -36,8 +36,8 @@ const teamMembers = [
 export default function TeamCarousel() {
   return (
     <section className="w-full bg-gray-900 py-12">
-      <h2 className="text-3xl font-bold text-center mb-8 text-white">
-        Meet Our Team
+      <h2 className="text-3xl font-bold text-center mb-8 text-gray-200">
+        Meet Our Team Leads
       </h2>
 
       <Swiper
@@ -68,7 +68,7 @@ export default function TeamCarousel() {
               <h3 className="mt-4 text-xl font-semibold text-gray-800">
                 {member.name}
               </h3>
-              <p className="text-gray-600">{member.position}</p>
+              <p className="text-gray-500">{member.position}</p>
             </div>
           </SwiperSlide>
         ))}

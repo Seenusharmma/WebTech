@@ -1,10 +1,13 @@
 @import "tailwindcss";
 
+* {
+  font-family: Georgia, serif;
+}
+
 .body {
   background: linear-gradient(to bottom, #000000, #1e1b4b, #000000);
   color: #ffffff;
 }
-
 
 /* Hide scrollbar but keep scrolling */
 .no-scrollbar::-webkit-scrollbar {
@@ -12,5 +15,5 @@
 }
 .no-scrollbar {
   -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none;    /* Firefox */
+  scrollbar-width: none; /* Firefox */
 }
