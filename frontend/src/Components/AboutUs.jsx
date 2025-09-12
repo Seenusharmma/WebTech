@@ -3,20 +3,20 @@ import { motion } from "framer-motion";
 
 const AboutUs = () => {
   return (
-    <section className="bg-gradient-to-b from-black via-indigo-950 to-black text-white  py-20 px-5 md:px-20">
+    <section className="bg-gradient-to-b from-black via-indigo-950 to-black text-white  py-5 px-5 md:px-20">
       <div className="max-w-6xl mx-auto text-center">
         {/* Animated Heading */}
-        <motion.h2
+        {/* <motion.h2
           className="text-4xl md:text-5xl font-bold mb-6 "
           initial={{ opacity: 0, y: -50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
         >
           About Us
-        </motion.h2>
+        </motion.h2> */}
 
         {/* Animated Subheading */}
-        <motion.p
+        {/* <motion.p
           className="text-gray-300 text-lg md:text-xl mb-12"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -24,7 +24,7 @@ const AboutUs = () => {
         >
           We are a passionate team dedicated to delivering top-notch digital solutions. 
           Our mission is to transform ideas into engaging experiences that captivate users.
-        </motion.p>
+        </motion.p> */}
 
         {/* Features Cards */}
         <div className="grid md:grid-cols-3 gap-8">
