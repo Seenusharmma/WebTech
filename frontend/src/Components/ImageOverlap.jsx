@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "../assets/ImageOverlap.svg"
 
 const ImageOverlap = () => {
   return (
@@ -10,9 +11,9 @@ const ImageOverlap = () => {
 
       <div className="absolute top-[20px] md:top-[60px] left-1/2 transform -translate-x-1/2 z-20">
         <img
-          src="https://petpoojaweb.gumlet.io/images/home-new/poss-slider1.png?w=1000&dpr=1.5"
+          src={Image}
           alt="Product Showcase"
-          className="w-[300px] md:w-[700px] h-auto"
+          className="w-[300px] md:w-[700px] h-auto rounded-3xl"
         />
       </div>
 

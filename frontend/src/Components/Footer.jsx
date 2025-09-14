@@ -4,14 +4,26 @@ import { FaXTwitter } from "react-icons/fa6";
 
 export default function Footer() {
   const socialLinks = [
-    { icon: <FaFacebookF className="text-blue-700" />, url: "https://www.facebook.com/people/WebUi/61580214405199/" },
-    { icon: <FaXTwitter className="text-xl" />, url: "https://x.com/WebuiStudio" },
-    { icon: <FaInstagram className="text-pink-700 hover:text-pink-900" />, url: "https://www.instagram.com/webui.build/" },
-    { icon: <FaLinkedin className="text-blue-700"/>, url: "https://www.linkedin.com/in/roshan-sharma70/" }, // In future when we gonna start hiring for our bulding team then that time we create a fresh one Linkdin Profile
+    {
+      icon: <FaFacebookF className="text-blue-700" />,
+      url: "https://www.facebook.com/people/WebUi/61580214405199/",
+    },
+    {
+      icon: <FaXTwitter className="text-xl" />,
+      url: "https://x.com/WebuiStudio",
+    },
+    {
+      icon: <FaInstagram className="text-pink-700 hover:text-pink-900" />,
+      url: "https://www.instagram.com/webui.build/",
+    },
+    {
+      icon: <FaLinkedin className="text-blue-700" />,
+      url: "https://www.linkedin.com/in/roshan-sharma70/",
+    }, // In future when we gonna start hiring for our bulding team then that time we create a fresh one Linkdin Profile
   ];
 
   return (
-    <footer className="relative bg-black text-white  overflow-hidden">
+    <footer className="relative bg-gray-900 text-white  overflow-hidden rounded-t-4xl">
       {/* Floating Stars */}
       <div className="absolute inset-0 -z-10">
         {[...Array(25)].map((_, i) => (
@@ -41,7 +53,7 @@ export default function Footer() {
         {/* Logo + Tagline */}
         <div className="text-center">
           <motion.h2
-            className="text-3xl md:text-4xl font-extrabold bg-green-300 bg-clip-text text-transparent drop-shadow-[0_0_12px_#08CB00]"
+            className="text-3xl md:text-4xl font-extrabold bg-white bg-clip-text text-transparent "
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
@@ -54,8 +66,8 @@ export default function Footer() {
             whileInView={{ opacity: 1 }}
             transition={{ delay: 0.3, duration: 1 }}
           >
-            We craft modern, scalable and user-friendly websites and mobile
-            apps to power your business growth.
+            We craft modern, scalable and user-friendly websites and mobile apps
+            to power your business growth.
           </motion.p>
         </div>
 
@@ -70,10 +82,10 @@ export default function Footer() {
             <motion.a
               key={i}
               href={link.url}
-              className="w-11 h-11 md:w-12 md:h-12 flex items-center justify-center rounded-full bg-gray-400 text-black text-lg md:text-xl"
+              className="w-11 h-11 md:w-12 md:h-12 flex items-center justify-center rounded-full bg-gray-100 text-black text-3xl md:text-xl hover:bg-white"
               whileHover={{
                 scale: 1.15,
-                boxShadow: "0 0 25px #05df72",
+                boxShadow: "0 0 25px #DCDCDC",
                 rotate: 8,
               }}
               whileTap={{ scale: 0.9 }}
@@ -89,23 +101,12 @@ export default function Footer() {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ delay: 0.7, duration: 1 }}
-        >
-          {/* {["Home", "About Us", "Services", "Projects", "Reviews", "Contact"].map(
-            (item, i) => (
-              <motion.li
-                key={i}
-                className="cursor-pointer hover:text-purple-400 transition"
-                whileHover={{ scale: 1.1 }}
-              >
-                {item}
-              </motion.li>
-            )
-          )} */}
-        </motion.ul>
+        ></motion.ul>
 
+        <hr />
         {/* Bottom Text */}
         <motion.div
-          className="mt-10 text-center text-xs md:text-sm text-gray-300"
+          className="mt-6 text-center text-xs md:text-sm text-gray-300"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ delay: 1, duration: 1 }}
