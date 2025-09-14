@@ -35,8 +35,8 @@ const teamMembers = [
 
 export default function TeamCarousel() {
   return (
-    <section className="w-full bg-gray-900 py-12">
-      <h2 className="text-3xl font-bold text-center mb-8 text-gray-200">
+    <section className="w-full bg-gray-100 py-12">
+      <h2 className="text-3xl font-bold text-center mb-8 text-black">
         Meet Our Team Leads
       </h2>
 

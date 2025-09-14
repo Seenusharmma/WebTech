@@ -30,12 +30,12 @@ const services = [
 
 export default function ServicesShowcase() {
   return (
-    <section className="bg-purple-800 py-16 px-6">
+    <section className="bg-gray-100 py-16 px-6">
       <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-center gap-10">
         {services.map((service) => (
           <div
             key={service.id}
-            className="flex-1 text-center text-white max-w-sm"
+            className="flex-1 text-center text-black max-w-sm"
           >
             {/* Tilted image */}
             <div className="mb-6">

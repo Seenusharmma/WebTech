@@ -1,13 +1,13 @@
 @import "tailwindcss";
 
 * {
-  font-family: Georgia, serif;
+  font-family: 'DM Sans';
 }
 
-.body {
-  background: linear-gradient(to bottom, #000000, #1e1b4b, #000000);
+/* .body {
+  background-image: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);
   color: #ffffff;
-}
+} */
 
 /* Hide scrollbar but keep scrolling */
 .no-scrollbar::-webkit-scrollbar {
