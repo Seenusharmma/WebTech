@@ -22,6 +22,7 @@ const FAQs = () => {
 
         {questions.map((q) => (
           <div key={q.id} className="mb-4 last:mb-0">
+            {/* Question Button */}
             <button
               className={`w-full text-left text-lg md:text-2xl focus:outline-none p-4 rounded-lg shadow-md flex justify-between items-center transition-colors duration-300 
               ${
@@ -41,14 +42,15 @@ const FAQs = () => {
               )}
             </button>
 
+            {/* Answer with smooth animation */}
             <AnimatePresence>
               {activeQuestion === q.id && (
                 <motion.div
-                  initial={{ opacity: 0, height: 0 }}
-                  animate={{ opacity: 1, height: "auto" }}
-                  exit={{ opacity: 0, height: 0 }}
+                  initial={{ opacity: 0, maxHeight: 0 }}
+                  animate={{ opacity: 1, maxHeight: 500 }}
+                  exit={{ opacity: 0, maxHeight: 0 }}
                   transition={{ duration: 0.3 }}
-                  className="mt-2 text-gray-900 ml-4 overflow-hidden"
+                  className="overflow-hidden mt-2 text-gray-900 ml-4"
                 >
                   <p>{q.answer}</p>
                 </motion.div>
