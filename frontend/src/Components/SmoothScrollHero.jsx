@@ -148,12 +148,12 @@ const Schedule = () => {
         transition={{ ease: "easeInOut", duration: 0.75 }}
         className="mb-12 text-3xl sm:text-4xl font-black uppercase text-zinc-50"
       >
-        Upcoming Projects
+        We Developed
       </motion.h1>
-      <ScheduleItem title="Web Dev Project" date="Oct 10th" location="Remote" />
-      <ScheduleItem title="Mobile App" date="Oct 22nd" location="Bangalore" />
-      <ScheduleItem title="UI/UX Audit" date="Nov 5th" location="Delhi" />
-      <ScheduleItem title="Startup MVP" date="Nov 20th" location="Remote" />
+      <ScheduleItem title="Website Dev"  location="Bhubaneswar" />
+      <ScheduleItem title="Mobile App" location="Bhubaneswar" />
+      <ScheduleItem title="UI/UX Design"  location="Bhubaneswar" />
+      <ScheduleItem title="Graphics Design"  location="Bhubaneswar" />
     </section>
   );
 };
