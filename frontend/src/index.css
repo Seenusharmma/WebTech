@@ -4,17 +4,3 @@
   font-family: 'DM Sans';
 }
 
-/* .body {
-  background-image: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);
-  color: #ffffff;
-} */
-
-/* Hide scrollbar but keep scrolling
-
-.no-scrollbar::-webkit-scrollbar {
-  display: none;
-}
-.no-scrollbar {
-  -ms-overflow-style: none; 
-  scrollbar-width: none; 
-} 

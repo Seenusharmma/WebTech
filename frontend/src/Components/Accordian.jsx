@@ -10,29 +10,26 @@ const Accordian = ({ data }) => {
       if (prev.includes(id)) {
         return prev.filter((itemId) => itemId !== id);
       } else {
-        if (allowMultiple) {
-          return [...prev, id];
-        } else {
-          return [id];
-        }
+        return allowMultiple ? [...prev, id] : [id];
       }
     });
   };
 
   return (
-    <div className="bg-gray-200 rounded-xl p-6 shadow-xl">
-      <div className="flex justify-between items-center mb-6">
+    <div className="bg-gray-200 rounded-xl p-4 sm:p-6 md:p-8 shadow-xl max-w-5xl mx-auto">
+      {/* Controls */}
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
         <div className="flex items-center">
           <input
             type="checkbox"
             id="multiple-expand"
             checked={allowMultiple}
             onChange={() => setAllowMultiple(!allowMultiple)}
-            className="w-5 h-5 bg-red-800"
+            className="w-4 h-4 sm:w-5 sm:h-5"
           />
           <label
             htmlFor="multiple-expand"
-            className="ml-2 text-xl font-bold text-gray-800"
+            className="ml-2 text-base sm:text-lg md:text-xl font-bold text-gray-800"
           >
             Allow Multiple Open
           </label>
@@ -40,12 +37,13 @@ const Accordian = ({ data }) => {
         <button
           onClick={() => setActiveItems([])}
           disabled={activeItems.length === 0}
-          className="bg-red-600 text-white px-4 py-2 hover:bg-red-700 rounded-md text-sm disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+          className="bg-red-600 text-white px-3 py-2 sm:px-4 sm:py-2 hover:bg-red-700 rounded-md text-sm sm:text-base disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
         >
           Close All
         </button>
       </div>
 
+      {/* Accordion Items */}
       <div className="space-y-3">
         {data.map((item) => (
           <div
@@ -54,16 +52,18 @@ const Accordian = ({ data }) => {
           >
             <button
               onClick={() => toogleItem(item.id)}
-              className={`w-full flex justify-between items-center p-4 transition-colors duration-300 
+              className={`w-full flex justify-between items-center p-3 sm:p-4 transition-colors duration-300 
                 ${
                   activeItems.includes(item.id)
-                    ? "bg-gray-400 text-gray-900 text-xl"
-                    : "bg-gray-300 hover:bg-gray-400 text-gray-800 text-xl"
+                    ? "bg-gray-400 text-gray-900"
+                    : "bg-gray-300 hover:bg-gray-400 text-gray-800"
                 }`}
             >
-              <span className="font-medium">{item.question}</span>
+              <span className="font-medium text-sm sm:text-base md:text-lg">
+                {item.question}
+              </span>
               <span
-                className={`transform transition-transform duration-300 ${
+                className={`transform transition-transform duration-300 text-lg sm:text-xl ${
                   activeItems.includes(item.id) ? "rotate-180" : ""
                 }`}
               >
@@ -71,6 +71,7 @@ const Accordian = ({ data }) => {
               </span>
             </button>
 
+            {/* Answer */}
             <div
               className={`grid transition-all duration-300 ease-in-out ${
                 activeItems.includes(item.id)
@@ -79,7 +80,7 @@ const Accordian = ({ data }) => {
               }`}
             >
               <div className="overflow-hidden">
-                <div className="p-4 bg-gray-100 text-gray-800 text-xl">
+                <div className="p-3 sm:p-4 bg-gray-100 text-gray-800 text-sm sm:text-base md:text-lg">
                   {item.answer}
                 </div>
               </div>

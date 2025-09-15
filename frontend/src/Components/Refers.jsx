@@ -23,7 +23,7 @@ const features = [
 
 const Refers = () => {
   return (
-    <div className="bg-[#0a1c2c] min-h-screen px-6 py-16">
+    <div className="bg-[#0a1c2c] min-h-screen px-6 py-16 rounded-t-4xl">
       <div className="hidden text-center mb-12 md:block">
         <div>
           <button className="px-5 py-2 md:px-6 md:py-[10px] text-center font-semibold section-head-top leading-[1] bg-[#213C53] border border-2-[#FFFFFF] rounded-full text-[#FFFFFF] mb-5 inline-block !tracking-[0.0625em]">

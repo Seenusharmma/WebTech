@@ -4,7 +4,7 @@ import { SmoothScrollHero } from "./SmoothScrollHero";
 
 export default function AboutHero() {
   return (
-    <section className="relative bg-gradient-to-b mt-7 from-black via-indigo-950 to-black text-white py-16 px-6 lg:px-20">
+    <section className="relative bg-gray-900 text-white py-16 px-6 lg:px-20">
       <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
         
         {/* Left: Video */}

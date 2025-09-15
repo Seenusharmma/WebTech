@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 
 const AboutUs = () => {
   return (
-    <section className="bg-gradient-to-b from-black via-indigo-950 to-black text-white  py-5 px-5 md:px-20">
+    <section className="bg-gray-900 text-white  py-5 px-5 md:px-20">
       <div className="max-w-6xl mx-auto text-center">
         {/* Animated Heading */}
         {/* <motion.h2
