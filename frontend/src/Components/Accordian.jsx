@@ -79,7 +79,7 @@ const Accordian = ({ data }) => {
               }`}
             >
               <div className="overflow-hidden">
-                <div className="p-4 bg-gray-100 text-gray-700 text-xl">
+                <div className="p-4 bg-gray-100 text-gray-800 text-xl">
                   {item.answer}
                 </div>
               </div>
