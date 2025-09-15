@@ -1,5 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { SmoothScrollHero } from "./SmoothScrollHero";
 
 export default function AboutHero() {
   return (
@@ -45,6 +46,7 @@ export default function AboutHero() {
           </button>
         </div>
       </div>
+      <SmoothScrollHero/>
     </section>
   );
 }

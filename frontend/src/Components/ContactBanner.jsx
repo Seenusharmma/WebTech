@@ -6,13 +6,13 @@ export default function ContactBanner() {
   const navigate = useNavigate();
 
   return (
-    <section className="w-full bg-indigo-900 py-12 px-6 flex flex-col md:flex-row items-center justify-between relative">
+    <section className="w-full bg-[#0f2740] py-12 px-6 flex flex-col md:flex-row items-center justify-between relative">
       {/* Left side text */}
       <div className="text-center md:text-left max-w-2xl z-10">
-        <h2 className="text-2xl md:text-3xl font-bold text-black">
+        <h2 className="text-2xl md:text-3xl font-bold text-gray-200">
           Send your requirements.
         </h2>
-        <p className="mt-3 text-white text-lg">
+        <p className="mt-3 text-gray-100 text-lg">
           If you have any questions feel free to contact us!
         </p>
       </div>
@@ -22,7 +22,7 @@ export default function ContactBanner() {
         {/* Use a native button and navigate programmatically to avoid Link-related surprises */}
         <button
           onClick={() => navigate("/contact")}
-          className="bg-purple-700 hover:bg-purple-800 text-white font-semibold px-6 py-3 rounded-md transition z-20"
+          className="bg-gray-600 text-white hover:bg-red-600 hover:text-white font-semibold px-6 py-3 rounded-md transition z-20"
         >
           CONTACT US
         </button>
@@ -31,7 +31,7 @@ export default function ContactBanner() {
       {/* Background triangle — pointer-events-none so it won't block clicks */}
       <div className="absolute right-0 top-0 w-0 h-0
                       border-t-[200px] border-t-transparent
-                      border-l-[220px] border-l-gray-200
+                      border-l-[220px] border-l-gray-300
                       hidden md:block pointer-events-none" />
     </section>
   );
