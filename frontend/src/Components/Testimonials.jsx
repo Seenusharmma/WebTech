@@ -32,7 +32,7 @@ export default function Testimonials() {
   ];
 
   return (
-    <section className="py-16 bg-gradient-to-b from-black via-indigo-950 to-black text-white">
+    <section className="py-16 bg-[linear-gradient(to_top,_#d5d4d0_0%,_#d5d4d0_1%,_#eeeeec_31%,_#efeeec_75%,_#e9e9e7_100%)] text-black rounded-b-4xl shadow-custom-gray">
       <div className="max-w-7xl mx-auto px-6">
         <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
           What Our Clients Say
@@ -51,17 +51,17 @@ export default function Testimonials() {
         >
           {testimonials.map((t, i) => (
             <SwiperSlide key={i}>
-              <div className="bg-purple-800 text-white rounded-2xl shadow-lg p-6 h-full flex flex-col">
+              <div className="bg-gray-300 text-black rounded-2xl shadow-lg p-6 h-full flex flex-col">
                 <p className="text-lg italic mb-6 flex-grow">“{t.text}”</p>
                 <div className="flex items-center mt-auto">
                   <img
                     src={t.image}
                     alt={t.name}
-                    className="w-14 h-14 rounded-full border-2 border-blue-500 object-cover"
+                    className="w-14 h-14 rounded-full border-2 border-gray-400 object-cover"
                   />
                   <div className="ml-4">
                     <h4 className="font-semibold">{t.name}</h4>
-                    <p className="text-sm text-white font-bold">{t.role}</p>
+                    <p className="text-sm text-gray-100 font-bold">{t.role}</p>
                   </div>
                 </div>
               </div>

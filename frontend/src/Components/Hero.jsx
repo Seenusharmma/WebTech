@@ -5,7 +5,7 @@ export default function Hero() {
   return (
     <section className="relative min-h-96  h-[37rem] flex items-center justify-center text-center overflow-hidden  bg-gray-900 text-white px-4 py-12 sm:py-20">
       {/* Floating Stars Background */}
-      <div className="absolute mb-[500px] inset-0">
+      <div className="absolute inset-0 -z-10">
         {[...Array(40)].map((_, i) => (
           <motion.div
             key={i}

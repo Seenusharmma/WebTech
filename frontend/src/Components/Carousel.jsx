@@ -44,7 +44,7 @@ const Carousel = () => {
         {slides.map((slide) => (
           <SwiperSlide key={slide.id}>
             <motion.div
-              className="relative w-full h-[250px] sm:h-[400px] md:h-[600px] overflow-hidden rounded-xl"
+              className="relative w-full h-[170px] sm:h-[400px] md:h-[600px] overflow-hidden rounded-xl"
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.6 }}

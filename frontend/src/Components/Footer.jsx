@@ -1,16 +1,17 @@
 import { motion } from "framer-motion";
-import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedin } from "react-icons/fa";
+import { FaFacebookF, FaInstagram, FaLinkedin } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
 
 export default function Footer() {
   const socialLinks = [
-    { icon: <FaFacebookF />, url: "https://www.facebook.com/people/WebUi/61580214405199/" },
-    { icon: <FaTwitter />, url: "https://x.com/WebuiStudio" },
-    { icon: <FaInstagram />, url: "https://www.instagram.com/webui.build/" },
-    { icon: <FaLinkedin />, url: "https://www.linkedin.com/in/roshan-sharma70/" }, // In feture when we gonna start hiring for our bulding team then that time we create a fresh one Linkdin Profile
+    { icon: <FaFacebookF className="text-blue-700" />, url: "https://www.facebook.com/people/WebUi/61580214405199/" },
+    { icon: <FaXTwitter className="text-xl" />, url: "https://x.com/WebuiStudio" },
+    { icon: <FaInstagram className="text-pink-700 hover:text-pink-900" />, url: "https://www.instagram.com/webui.build/" },
+    { icon: <FaLinkedin className="text-blue-700"/>, url: "https://www.linkedin.com/in/roshan-sharma70/" }, // In future when we gonna start hiring for our bulding team then that time we create a fresh one Linkdin Profile
   ];
 
   return (
-    <footer className="relative bg-gradient-to-b from-black via-indigo-950 to-black text-white  overflow-hidden">
+    <footer className="relative bg-black text-white  overflow-hidden">
       {/* Floating Stars */}
       <div className="absolute inset-0 -z-10">
         {[...Array(25)].map((_, i) => (
@@ -40,7 +41,7 @@ export default function Footer() {
         {/* Logo + Tagline */}
         <div className="text-center">
           <motion.h2
-            className="text-3xl md:text-4xl font-extrabold bg-gradient-to-r from-pink-500 via-purple-400 to-blue-500 bg-clip-text text-transparent drop-shadow-[0_0_12px_#9333ea]"
+            className="text-3xl md:text-4xl font-extrabold bg-green-300 bg-clip-text text-transparent drop-shadow-[0_0_12px_#08CB00]"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
@@ -69,10 +70,10 @@ export default function Footer() {
             <motion.a
               key={i}
               href={link.url}
-              className="w-11 h-11 md:w-12 md:h-12 flex items-center justify-center rounded-full bg-gradient-to-r from-purple-600 to-indigo-600 shadow-lg text-white text-lg md:text-xl"
+              className="w-11 h-11 md:w-12 md:h-12 flex items-center justify-center rounded-full bg-gray-400 text-black text-lg md:text-xl"
               whileHover={{
                 scale: 1.15,
-                boxShadow: "0 0 25px #a855f7",
+                boxShadow: "0 0 25px #05df72",
                 rotate: 8,
               }}
               whileTap={{ scale: 0.9 }}
@@ -104,7 +105,7 @@ export default function Footer() {
 
         {/* Bottom Text */}
         <motion.div
-          className="mt-10 text-center text-xs md:text-sm text-gray-500"
+          className="mt-10 text-center text-xs md:text-sm text-gray-300"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ delay: 1, duration: 1 }}

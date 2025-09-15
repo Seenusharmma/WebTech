@@ -22,9 +22,9 @@ const Home = () => {
       <Testimonials />
       <FAQs/>
 
-
     </div>
   );
 };
 
 export default Home;
+
