@@ -66,7 +66,7 @@ const Navbar = () => {
         {/* Contact Button (Desktop Only) */}
         <button
           onClick={() => navigate("/contact")}
-          className="hidden md:block bg-red-700 hover:bg-red-800 text-white px-4 py-2 rounded-lg transition"
+          className="hidden md:block bg-gray-200 hover:bg-gray-300 text-black px-4 py-2 rounded-lg transition"
         >
           CONTACT US
         </button>
@@ -110,7 +110,7 @@ const Navbar = () => {
               setIsOpen(false);
               navigate("/contact");
             }}
-            className="w-full bg-red-700 hover:bg-red-800 text-white px-4 py-2 rounded-lg transition"
+            className="w-full bg-gray-100 hover:bg-gray-300 text-black px-4 py-2 rounded-lg transition"
           >
             CONTACT US
           </button>
