@@ -4,14 +4,14 @@ const stats = [
   {
     id: 1,
     icon: "https://petpoojaweb.gumlet.io/images/home-new/matrics-1.svg?w=240&dpr=1.5",
-    value: "100k+",
+    value: "30+",
     label: "Businesses trust us",
   },
   {
     id: 2,
     icon: "https://petpoojaweb.gumlet.io/images/home-new/matrics-2.svg?w=240&dpr=1.5",
-    value: "14+",
-    label: "Years of excellence",
+    value: "1+",
+    label: "Years of experience",
   },
   {
     id: 3,

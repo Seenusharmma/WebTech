@@ -10,34 +10,35 @@ const teamMembers = [
     id: 1,
     name: "Manish Kumar",
     position: "Testing & Management",
-    image: "https://i.ibb.co/XZrWFK0N/Whats-App-Image-2025-08-28-at-20-19-26-35ade081.jpg",
+    image:
+      "https://i.ibb.co/XZrWFK0N/Whats-App-Image-2025-08-28-at-20-19-26-35ade081.jpg",
   },
-  
   {
     id: 2,
     name: "Ayush Kumar",
-    position: "UI/UX Designer",
+    position: "UI/UX",
     image: "https://i.ibb.co/WvszCrVB/DSC00222-1.jpg",
   },
   {
     id: 3,
     name: "Neha Niharika Swain",
-    position: "Frontend Developer",
-    image: "https://i.ibb.co/RpzW3Pwd/Whats-App-Image-2025-09-09-at-19-39-00-1400b601.jpg",
+    position: "Frontend",
+    image:
+      "https://i.ibb.co/RpzW3Pwd/Whats-App-Image-2025-09-09-at-19-39-00-1400b601.jpg",
   },
   {
     id: 4,
     name: "Roshan Sharma",
-    position: "Full-Stack Developer",
+    position: "Full-Stack",
     image: "https://i.ibb.co/0pyFKWfr/my-pic.jpg",
   },
 ];
 
 export default function TeamCarousel() {
   return (
-    <section className="w-full bg-gray-100 py-12">
-      <h2 className="text-3xl font-bold text-center mb-8 text-black">
-        Meet Our Team Leads
+    <section className="w-full bg-gradient-to-b from-gray-100 to-gray-200 py-16">
+      <h2 className="text-4xl font-extrabold text-center mb-12 text-gray-800 tracking-wide">
+         Meet Our Team Leads
       </h2>
 
       <Swiper
@@ -48,27 +49,38 @@ export default function TeamCarousel() {
           delay: 0,
           disableOnInteraction: false,
         }}
-        speed={3000} // controls continuous sliding speed
+        speed={3000}
         loop={true}
         breakpoints={{
           640: { slidesPerView: 2 },
           1024: { slidesPerView: 3 },
           1280: { slidesPerView: 4 },
         }}
-        className="max-w-6xl mx-auto"
+        className="max-w-7xl mx-auto"
       >
         {teamMembers.map((member) => (
           <SwiperSlide key={member.id}>
-            <div className="bg-gray-200 shadow-lg rounded-2xl overflow-hidden flex flex-col items-center text-center p-6 hover:shadow-2xl transition">
-              <img
-                src={member.image}
-                alt={member.name}
-                className="w-32 h-32 object-cover rounded-full "
-              />
-              <h3 className="mt-4 text-xl font-semibold text-gray-800">
+            <div className="relative bg-white rounded-3xl overflow-hidden flex flex-col items-center text-center p-8 transform hover:-translate-y-2 hover:scale-105 transition duration-300">
+              {/* Profile image */}
+              <div className="relative">
+                <img
+                  src={member.image}
+                  alt={member.name}
+                  className="w-32 h-32 object-cover rounded-full  shadow-md"
+                />
+              </div>
+
+              {/* Member info */}
+              <h3 className="mt-5 text-xl font-bold text-gray-800">
                 {member.name}
               </h3>
-              <p className="text-gray-500">{member.position}</p>
+              <p className="text-gray-500 text-sm">{member.position}</p>
+
+              {/* Team Lead Badge */}
+              <span className="mt-3 inline-block bg-gradient-to-r from-red-500 to-pink-500 text-white text-xs font-semibold px-4 py-1 rounded-full shadow-md">
+                Team Lead
+              </span>
+
             </div>
           </SwiperSlide>
         ))}

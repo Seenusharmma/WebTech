@@ -63,9 +63,73 @@ const HeroSection = () => {
       </div>
 
       {/* Bottom Content Section */}
-      <div className="bg-white text-center px-3 py-9">
-        {/* Future Tabs / Content */}
-      </div>
+      {/* Bottom Content Section */}
+<div className="bg-white text-center px-4 sm:px-6 py-12">
+  <h2 className="text-xl sm:text-2xl md:text-3xl font-semibold text-gray-800 mb-8">
+    Our Technology Services
+  </h2>
+
+  <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 max-w-6xl mx-auto">
+    {/* Tab 1 */}
+    <div className="p-6 bg-gray-50 rounded-xl shadow hover:shadow-lg transition">
+      <h3 className="text-lg font-semibold text-[#0a1c2c] mb-3">UI/UX Design</h3>
+      <p className="text-sm text-gray-600">
+        Creating elegant, user-centric designs that align brand identity with 
+        seamless usability across web and mobile platforms.
+      </p>
+    </div>
+
+    {/* Tab 2 */}
+    <div className="p-6 bg-gray-50 rounded-xl shadow hover:shadow-lg transition">
+      <h3 className="text-lg font-semibold text-[#0a1c2c] mb-3">Web Development</h3>
+      <p className="text-sm text-gray-600">
+        Delivering high-performing websites with modern stacks like 
+        React, Next.js, and Tailwind — optimized for speed and scalability.
+      </p>
+    </div>
+
+    {/* Tab 3 */}
+    <div className="p-6 bg-gray-50 rounded-xl shadow hover:shadow-lg transition">
+      <h3 className="text-lg font-semibold text-[#0a1c2c] mb-3">App Development</h3>
+      <p className="text-sm text-gray-600">
+        Building robust mobile applications that connect businesses 
+        with users through intuitive and reliable digital products.
+      </p>
+    </div>
+
+    {/* Tab 4 */}
+    <div className="p-6 bg-gray-50 rounded-xl shadow hover:shadow-lg transition">
+      <h3 className="text-lg font-semibold text-[#0a1c2c] mb-3">Testing & QA</h3>
+      <p className="text-sm text-gray-600">
+        Ensuring performance, security, and flawless user journeys 
+        through rigorous manual and automated testing processes.
+      </p>
+    </div>
+
+    {/* Tab 5 */}
+    <div className="p-6 bg-gray-50 rounded-xl shadow hover:shadow-lg transition">
+      <h3 className="text-lg font-semibold text-[#0a1c2c] mb-3">AI & Automation</h3>
+      <p className="text-sm text-gray-600">
+        Leveraging Artificial Intelligence and automation to drive smarter 
+        workflows, predictive insights, and innovative user experiences.
+      </p>
+    </div>
+
+    {/* Tab 6 */}
+    <div className="p-6 bg-gray-50 rounded-xl shadow hover:shadow-lg transition">
+      <h3 className="text-lg font-semibold text-[#0a1c2c] mb-3">Cloud & Deployment</h3>
+      <p className="text-sm text-gray-600">
+        Scalable hosting and cloud-native deployment strategies 
+        that ensure uptime, speed, and secure digital infrastructure.
+      </p>
+    </div>
+  </div>
+
+  <p className="mt-10 text-sm text-gray-500 italic max-w-2xl mx-auto">
+    “From design to deployment — we engineer the future of digital experiences.”
+  </p>
+</div>
+
     </section>
   );
 };
