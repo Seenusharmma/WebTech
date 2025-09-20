@@ -1,4 +1,4 @@
-// src/pages/FigmaDesigns.jsx
+// src/pages/FigmaDesigns.jsx this the link routing page @Neha
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 

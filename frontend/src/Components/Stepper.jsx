@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import {
-  FaPhone,
+  FaPhoneAlt ,
   FaComments,
   FaPencilRuler,
   FaTags,
@@ -11,7 +11,7 @@ import {
 } from "react-icons/fa";
 
 const steps = [
-  { id: 1, label: "Contact", icon: <FaPhone /> },
+  { id: 1, label: "Contact", icon: <FaPhoneAlt  /> },
   { id: 2, label: "Discuss", icon: <FaComments /> },
   { id: 3, label: "Designs", icon: <FaPencilRuler /> },
   { id: 4, label: "Price", icon: <FaTags /> },
@@ -34,7 +34,7 @@ const Stepper = () => {
   return (
     <div className="w-full flex flex-col items-center px-4 py-10">
       <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-8">
-        Our Process
+        Our Process Of Working
       </h2>
 
       {/* Stepper */}
@@ -51,7 +51,7 @@ const Stepper = () => {
             <div
               className={`flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 rounded-full transition-colors duration-300 ${
                 currentStep >= step.id
-                  ? "bg-blue-600 text-white"
+                  ? "bg-black text-white"
                   : "bg-gray-200 text-gray-600"
               }`}
             >
@@ -61,7 +61,7 @@ const Stepper = () => {
             {/* Label */}
             <p
               className={`mt-2 text-xs sm:text-sm md:text-base font-medium text-center ${
-                currentStep >= step.id ? "text-blue-600" : "text-gray-500"
+                currentStep >= step.id ? "text-black" : "text-gray-500"
               }`}
             >
               {step.label}
@@ -71,12 +71,12 @@ const Stepper = () => {
             {index < steps.length - 1 && (
               <div className="hidden md:block absolute top-6 left-[60%] w-full h-1 bg-gray-200 -z-10">
                 <motion.div
-                  className="h-1 bg-blue-600"
+                  className="h-1 bg-black"
                   initial={{ width: 0 }}
                   animate={{
                     width: currentStep > step.id ? "100%" : "0%",
                   }}
-                  transition={{ duration: 0.6 }}
+                  transition={{ duration: 0.2 }}
                 />
               </div>
             )}
@@ -92,7 +92,7 @@ const Stepper = () => {
         transition={{ duration: 0.6 }}
         className="mt-10 p-5 sm:p-6 rounded-xl bg-gray-100 shadow-md w-full max-w-lg text-center"
       >
-        <h3 className="text-base sm:text-lg md:text-xl font-semibold text-blue-600 mb-2">
+        <h3 className="text-base sm:text-lg md:text-xl font-semibold text-black mb-2">
           Step {currentStep}: {steps.find((s) => s.id === currentStep)?.label}
         </h3>
         <p className="text-gray-600 text-sm sm:text-base leading-relaxed">

@@ -1,4 +1,4 @@
-// src/pages/GraphicsDesign.jsx
+// src/pages/GraphicsDesign.jsx this the link routing @Neha
 import { motion } from "framer-motion";
 import { Telescope } from "lucide-react";
 import { Link } from "react-router-dom";
