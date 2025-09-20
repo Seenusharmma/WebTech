@@ -19,119 +19,106 @@ const socialLinks = [
   {
     icon: <FaLinkedin className="text-blue-700" />,
     url: "https://www.linkedin.com/in/roshan-sharma70/",
-  }, // In future when we gonna start hiring for our bulding team then that time we create a fresh one Linkdin Profile
+  },
 ];
 
 const Footer = () => {
   return (
-    <div className="relative bg-gray-900 text-white  overflow-hidden rounded-t-4xl">
-      <div className="container mx-auto px-6 py-8">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          {/* First Column */}
+    <footer className="relative bg-gray-900 text-white overflow-hidden rounded-t-3xl">
+      <div className="max-w-7xl mx-auto px-6 py-10">
+        {/* Grid layout */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10 text-center md:text-left">
+          
+          {/* Brand */}
           <div>
             <motion.h1
-              className="text-xl font-semibold mb-4 "
+              className="text-2xl font-bold mb-3"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
             >
               WebUi
-              <p className="font-medium">
-                Experience The Finest Work In WebUi Services.
-              </p>
             </motion.h1>
+            <p className="text-gray-300 text-sm">
+              Experience The Finest Work In WebUi Services.
+            </p>
           </div>
 
-          {/* Second Column */}
+          {/* Quick Links */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="text-xl text-gray-100 font-semibold mb-4">
-              Quick Links
-            </h1>
-            <ul className="space-y-2">
-              <li>
-                <a href="/">Home</a>
-              </li>
-              <li>
-                <a href="/about">About Us</a>
-              </li>
-              <li>
-                <a href="/services">Services</a>
-              </li>
-              <li>
-                <a href="/gallery">Projects</a>
-              </li>
-              <li>
-                <a href="/reviews">Reviews</a>
-              </li>
+            <h2 className="text-lg font-semibold mb-3">Quick Links</h2>
+            <ul className="space-y-2 text-sm text-gray-300">
+              <li><a href="/">Home</a></li>
+              <li><a href="/about">About Us</a></li>
+              <li><a href="/services">Services</a></li>
+              <li><a href="/gallery">Projects</a></li>
+              <li><a href="/reviews">Reviews</a></li>
             </ul>
           </motion.div>
 
-          {/* Third Column */}
+          {/* Contact Info */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="text-xl text-white font-semibold mb-4">
-              Contact Info
-            </h1>
-            <ul className="space-y-4">
+            <h2 className="text-lg font-semibold mb-3">Contact Info</h2>
+            <ul className="space-y-3 text-sm text-gray-300">
               <li>
                 751012, Nayapalli, <br />
-                Bhubaneswar, Odisha, <br />
-                India
+                Bhubaneswar, Odisha, India
               </li>
               <li>+91 77520 67196</li>
               <li>webuisolution@gmail.com</li>
             </ul>
           </motion.div>
 
-          {/* Fourth Column */}
+          {/* Social Links */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="text-xl text-white font-semibold mb-4">Follow Us</h1>
-            <motion.div
-              className="flex justify-center flex-wrap gap-4 mt-8"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ delay: 0.5, duration: 0.8 }}
-            >
+            <h2 className="text-lg font-semibold mb-3">Follow Us</h2>
+            <div className="flex justify-center md:justify-start flex-wrap gap-4 mt-4">
               {socialLinks.map((link, i) => (
                 <motion.a
                   key={i}
                   href={link.url}
-                  className="w-11 h-11 md:w-12 md:h-12 flex items-center justify-center rounded-full bg-gray-100 text-black text-3xl md:text-xl hover:bg-white"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-11 h-11 flex items-center justify-center rounded-full bg-gray-100 text-black text-xl hover:bg-white transition"
                   whileHover={{
                     scale: 1.15,
-                    boxShadow: "0 0 25px #DCDCDC",
-                    rotate: 8,
+                    boxShadow: "0 0 20px #DCDCDC",
+                    rotate: 6,
                   }}
                   whileTap={{ scale: 0.9 }}
                 >
                   {link.icon}
                 </motion.a>
               ))}
-            </motion.div>
+            </div>
           </motion.div>
         </div>
       </div>
-      <hr />
+
+      <hr className="border-gray-700" />
+
+      {/* Bottom Note */}
       <motion.div
-        className="mt-6 text-center text-xs md:text-sm text-gray-300 mb-8"
+        className="mt-6 text-center text-xs md:text-sm text-gray-400 pb-6"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
-        transition={{ delay: 1, duration: 1 }}
+        transition={{ delay: 0.5, duration: 0.8 }}
       >
         © {new Date().getFullYear()} WebUi — All rights reserved.
       </motion.div>
-    </div>
+    </footer>
   );
 };
 
