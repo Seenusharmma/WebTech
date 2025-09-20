@@ -4,19 +4,19 @@ const features = [
   {
     title: "Continuous Innovation",
     description:
-      "We continuously research and develop our solutions and provide regular updates with new features to improve performance.",
-    img: "https://petpoojaweb.gumlet.io/images/home-new/who-we-are-1.svg?w=160&dpr=1.5", // replacing with images and contents
+      "We move at startup speed. Rapid prototyping, quick iterations, and MVPlaunches that help you test ideas and scale fast.",
+    img: "https://petpoojaweb.gumlet.io/images/home-new/who-we-are-1.svg?w=160&dpr=1.5",
   },
   {
     title: "Pricing",
     description:
-      "Industry-low, transparent pricing models designed to scale your business",
+      "Flexible payment plans and milestone-based billing. Get enterprise-qualitywebsites with startup-friendly payment terms",
     img: "https://petpoojaweb.gumlet.io/images/home-new/who-we-are-2.svg?w=330&dpr=1.5",
   },
   {
     title: "24x7 Support",
     description:
-      "Our dedicated support team is always ready to help you, you can reach out to us via call or email anytime.",
+      "We scale as you scale. From landing page to full platform, we're your techpartner through every growth stage.",
     img: "https://petpoojaweb.gumlet.io/images/home-new/who-we-are-4.svg?w=160&dpr=1.5",
   },
 ];
@@ -66,4 +66,3 @@ const Refers = () => {
 
 
 export default Refers;
-

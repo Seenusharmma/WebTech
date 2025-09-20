@@ -38,7 +38,7 @@ export default function TeamCarousel() {
   return (
     <section className="w-full bg-gradient-to-b from-gray-100 to-gray-200 py-16">
       <h2 className="text-4xl font-extrabold text-center mb-12 text-gray-800 tracking-wide">
-         Meet Our Team Leads
+        Meet Our Team Leads
       </h2>
 
       <Swiper
@@ -74,13 +74,12 @@ export default function TeamCarousel() {
               <h3 className="mt-5 text-xl font-bold text-gray-800">
                 {member.name}
               </h3>
-              <p className="text-gray-500 text-sm">{member.position}</p>
+              <p className="text-gray-500 text-md">{member.position}</p>
 
               {/* Team Lead Badge */}
-              <span className="mt-3 inline-block bg-gradient-to-r from-red-500 to-pink-500 text-white text-xs font-semibold px-4 py-1 rounded-full shadow-md">
+              <span className="mt-3 inline-block bg-gradient-to-r from-red-500 to-pink-500 text-white text-xs font-semibold px-5 py-2 rounded-full shadow-md">
                 Team Lead
               </span>
-
             </div>
           </SwiperSlide>
         ))}

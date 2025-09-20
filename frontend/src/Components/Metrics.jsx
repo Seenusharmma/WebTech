@@ -11,7 +11,7 @@ const stats = [
     id: 2,
     icon: "https://petpoojaweb.gumlet.io/images/home-new/matrics-2.svg?w=240&dpr=1.5",
     value: "1+",
-    label: "Years of experience",
+    label: "Years of excellence",
   },
   {
     id: 3,

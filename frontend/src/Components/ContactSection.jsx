@@ -2,8 +2,10 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { FaLocationArrow, FaPhoneAlt, FaClock } from "react-icons/fa";
+import { IoIosMail } from "react-icons/io";
 
-const Contact = () => {
+const ContactSection = () => {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
   const [submitted, setSubmitted] = useState(false);
 
@@ -18,7 +20,7 @@ const Contact = () => {
 
   const handleSendWhatsApp = () => {
     if (form.name && form.email && form.message) {
-      const phoneNumber = "917752067196"; 
+      const phoneNumber = "917752067196";
       const message = `Hello, my name is ${form.name}. My email is ${form.email}. Message: ${form.message}`;
       const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(
         message
@@ -44,7 +46,7 @@ const Contact = () => {
   const handleSendEmail = () => {
     if (form.name && form.email && form.message) {
       const subject = "New Contact Form Message";
-      const body = `Hello, my name is ${form.name}. My email is ${form.email}. Message: ${form.message}`;
+      const body = `Hello, my name is ${form.name}. My email is ${form.email}. ${form.message}`;
       window.location.href = `mailto:webuisolution@gmail.com?subject=${encodeURIComponent(
         subject
       )}&body=${encodeURIComponent(body)}`;
@@ -70,116 +72,170 @@ const Contact = () => {
   };
 
   return (
-    <section className="bg-gray-900 text-white py-20 px-5 md:px-20">
-      <div className="max-w-5xl mx-auto text-center">
-        <motion.h2
-          className="text-4xl md:text-5xl font-bold mb-6 tracking-wide bg-gradient-to-r from-pink-500 via-purple-400 to-blue-500 bg-clip-text text-transparent drop-shadow-[0_0_20px_#a855f7]"
-          initial={{ opacity: 0, y: -50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1 }}
-        >
-          Get In Touch
-        </motion.h2>
+    <div id="contact" className="py-20 bg-white">
+      <div className="container mx-auto px-4">
+        <div className="text-center mb-6">
+          <h1 className="text-4xl text-dark font-bold mb-1">Let's Talk</h1>
+          <div className="w-20 h-1 bg-primary mx-auto mb-2"></div>
+          <p className="text-grey-400 text-xl">We'll Love To Work For You</p>
+        </div>
 
-        <motion.p
-          className="text-gray-400 text-lg md:text-xl mb-12"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.3, duration: 1 }}
-        >
-          Have a project in mind? Send us a message and we’ll get back to you!
-        </motion.p>
+        <div className="flex flex-col md:flex-row items-center justify-between gap-10">
+          {/* Left Container */}
+          <motion.div
+            className="md:w-1/2"
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+          >
+            {/* Address */}
+            <div className="w-full overflow-hidden px-14 mb-6">
+              <h1 className="text-3xl mb-4 text-dark font-bold">Get In Touch</h1>
+              <div className="flex items-center gap-6">
+                <div className="w-12 h-12 bg-gray-200 text-gray-800 rounded-full flex items-center justify-center text-2xl">
+                  <FaLocationArrow />
+                </div>
+                <div className="mt-4">
+                  <p className="text-xl text-dark font-semibold">Address</p>
+                  <p className="w-60">
+                    751012, Nayapalli, <br />
+                    Bhubaneswar, Odisha, <br />
+                    India
+                  </p>
+                </div>
+              </div>
+            </div>
 
-        <motion.form
-          onSubmit={handleSubmit}
-          className="bg-gray-800 p-8 rounded-3xl shadow-xl max-w-3xl mx-auto space-y-6"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-        >
-          <div className="relative">
-            <input
-              type="text"
-              name="name"
-              value={form.name}
-              onChange={handleChange}
-              placeholder="Your Name"
-              className="peer w-full px-4 py-3 rounded-xl bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-purple-500"
-            />
-          </div>
+            {/* Phone */}
+            <div className="w-full overflow-hidden px-14 mb-6">
+              <div className="flex items-center gap-6">
+                <div className="w-12 h-12 bg-gray-200 text-gray-800 rounded-full flex items-center justify-center text-2xl">
+                  <FaPhoneAlt />
+                </div>
+                <div className="mt-4">
+                  <p className="text-xl text-dark font-semibold">Phone</p>
+                  <p className="w-60">+91 77520 67196</p>
+                </div>
+              </div>
+            </div>
 
-          <div className="relative">
-            <input
-              type="email"
-              name="email"
-              value={form.email}
-              onChange={handleChange}
-              placeholder="Your Email"
-              className="peer w-full px-4 py-3 rounded-xl bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-purple-500"
-            />
-          </div>
+            {/* Email */}
+            <div className="w-full overflow-hidden px-14 mb-6">
+              <div className="flex items-center gap-6">
+                <div className="w-12 h-12 bg-gray-200 text-gray-800 rounded-full flex items-center justify-center text-2xl">
+                  <IoIosMail />
+                </div>
+                <div className="mt-4">
+                  <p className="text-xl text-dark font-semibold">Email</p>
+                  <p className="w-60">webuisolution@gmail.com</p>
+                </div>
+              </div>
+            </div>
 
-          <div className="relative">
-            <textarea
-              name="message"
-              value={form.message}
-              onChange={handleChange}
-              placeholder="Your Message"
-              rows="5"
-              className="peer w-full px-4 py-3 rounded-xl bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-purple-500"
-            />
-          </div>
+            {/* Hours */}
+            <div className="w-full overflow-hidden px-14 mb-6">
+              <div className="flex items-center gap-6">
+                <div className="w-12 h-12 bg-gray-200 text-gray-800 rounded-full flex items-center justify-center text-2xl">
+                  <FaClock />
+                </div>
+                <div className="mt-4">
+                  <p className="text-xl text-dark font-semibold">Hours</p>
+                  <p className="w-50">
+                    Monday - Friday: 9:00 AM - 10:00 PM <br />
+                    Saturday: 9:00 AM - 9:00 PM <br />
+                    Available
+                  </p>
+                </div>
+              </div>
+            </div>
+          </motion.div>
 
-          <div className="flex flex-col md:flex-row gap-8">
-            <motion.button
-              onClick={handleSendEmail}
-              type="submit"
-              className="w-full py-3 rounded-xl bg-gradient-to-r from-purple-500 via-pink-500 to-blue-500 hover:scale-105 transition-transform duration-300 font-semibold shadow-lg"
-              whileHover={{ scale: 1.08 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              {submitted ? "Message Ready!" : "Send Message"}
-            </motion.button>
+          {/* Right Container */}
+          <motion.div
+            className="md:w-1/2 w-full"
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+          >
+            <div className="w-full rounded-2xl shadow-xl bg-gray-100 border border-gray-400 overflow-hidden p-8 md:p-10">
+              <h1 className="mb-6 text-2xl md:text-3xl text-gray-900 font-bold">
+                Contact With Us
+              </h1>
+              <motion.form
+                onSubmit={handleSubmit}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+                className="space-y-5"
+              >
+                {/* Name */}
+                <div className="relative">
+                  <input
+                    type="text"
+                    name="name"
+                    value={form.name}
+                    onChange={handleChange}
+                    placeholder="Your Name"
+                    className="w-full px-4 py-3 rounded-lg border border-gray-500 outline-none transition bg-gray-300"
+                  />
+                </div>
 
-            <motion.button
-              type="button"
-              onClick={handleSendWhatsApp}
-              className="w-full py-3 rounded-xl bg-gradient-to-r from-green-500 via-green-600 to-green-700 hover:scale-105 transition-transform duration-300 font-semibold shadow-lg"
-              whileHover={{ scale: 1.08 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              Send to WhatsApp
-            </motion.button>
-          </div>
-        </motion.form>
+                {/* Email */}
+                <div className="relative">
+                  <input
+                    type="email"
+                    name="email"
+                    value={form.email}
+                    onChange={handleChange}
+                    placeholder="Your Email"
+                    className="w-full px-4 py-3 rounded-lg border border-gray-500 outline-none transition bg-gray-300"
+                  />
+                </div>
 
-        <motion.div
-          className="mt-12 grid md:grid-cols-3 gap-6"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.5, duration: 1 }}
-        >
-          <div className="bg-gray-800 p-6 rounded-2xl shadow-lg hover:scale-105 transition-transform duration-300">
-            <h3 className="font-semibold text-lg text-purple-400 mb-2">Email</h3>
-            <p className="text-gray-300">webuisolution@gmail.com</p>
-          </div>
-          <div className="bg-gray-800 p-6 rounded-2xl shadow-lg hover:scale-105 transition-transform duration-300">
-            <h3 className="font-semibold text-lg text-purple-400 mb-2">Phone</h3>
-            <p className="text-gray-300">+91 77520 67196</p>
-          </div>
-          <div className="bg-gray-800 p-6 rounded-2xl shadow-lg hover:scale-105 transition-transform duration-300">
-            <h3 className="font-semibold text-lg text-purple-400 mb-2">
-              Location
-            </h3>
-            <p className="text-gray-300">Bhubaneswar, India</p>
-          </div>
-        </motion.div>
+                {/* Message */}
+                <div className="relative">
+                  <textarea
+                    name="message"
+                    value={form.message}
+                    onChange={handleChange}
+                    placeholder="Your Message"
+                    rows="5"
+                    className="w-full px-4 py-3 rounded-lg border border-gray-500 outline-none transition resize-none bg-gray-300"
+                  />
+                </div>
+
+                {/* Buttons */}
+                <div className="flex flex-col md:flex-row gap-4">
+                  <motion.button
+                    onClick={handleSendEmail}
+                    type="submit"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="w-full py-3 rounded-lg bg-gradient-to-r from-gray-600 via-gray-400 to-gray-600 text-white font-semibold shadow-md hover:bg-primary/90 transition"
+                  >
+                    {submitted ? "Message Ready!" : "Send Message"}
+                  </motion.button>
+
+                  <motion.button
+                    type="button"
+                    onClick={handleSendWhatsApp}
+                    className="w-full py-3 rounded-lg bg-gradient-to-r from-green-700 via-green-600 to-green-500 text-white font-semibold shadow-md hover:scale-105 transition-transform"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    Send to WhatsApp
+                  </motion.button>
+                </div>
+              </motion.form>
+
+              {/* Toast Container */}
+              <ToastContainer />
+            </div>
+          </motion.div>
+        </div>
       </div>
-
-      {/* Toast Container */}
-      <ToastContainer />
-    </section>
+    </div>
   );
 };
 
-export default Contact;
+export default ContactSection;

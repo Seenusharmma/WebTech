@@ -10,7 +10,7 @@ export default function Services() {
     {
   id: "web-development",
   title: "Web Development",
-  desc: "We build fast, responsive, and user-friendly websites.",
+  desc: "We craft fast, reliable, and user-friendly websites tailored to your business goals.",
   icon: <Laptop size={44} />,
   color: "from-purple-600 via-indigo-600 to-indigo-800",
   action: () => window.location.href = "/web-development",
@@ -19,7 +19,7 @@ export default function Services() {
     {
       id: "app-development",
       title: "App Development",
-      desc: "We create interactive web and mobile applications.",
+      desc: "We develop interactive, feature-rich web and mobile applications for seamless user engagement.",
       icon: <Smartphone size={44} />,
       color: "from-pink-500 via-purple-500 to-indigo-600",
       action: () => window.location.href = "/app-development",
@@ -28,7 +28,7 @@ export default function Services() {
     {
       id: "graphics-design",
       title: "Graphics Design",
-      desc: "We create stunning visuals and brand identity.",
+      desc: "We produce captivating visuals and memorable brand identities that set youapart",
       icon: <Telescope size={44} />,
       color: "from-yellow-500 via-orange-500 to-red-500",
       action: () => window.location.href = "/graphics-design",
@@ -36,10 +36,10 @@ export default function Services() {
     {
       id: "ui-ux",
       title: "UI/UX",
-      desc: "We design beautiful and engaging interfaces.",
+      desc: "We design intuitive and visually appealing interfaces for an exceptional user experience.",
       icon: <Stars size={44} />,
       color: "from-blue-500 via-cyan-500 to-teal-500",
-      action: () => (window.location.href = "/figma-designs"), // redirect
+      action: () => (window.location.href = "/figma-designs"),
     },
   ];
 

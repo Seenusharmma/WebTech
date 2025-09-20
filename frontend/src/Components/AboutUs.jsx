@@ -5,41 +5,20 @@ const AboutUs = () => {
   return (
     <section className="bg-gray-900 text-white  py-5 px-5 md:px-20">
       <div className="max-w-6xl mx-auto text-center">
-        {/* Animated Heading */}
-        {/* <motion.h2
-          className="text-4xl md:text-5xl font-bold mb-6 "
-          initial={{ opacity: 0, y: -50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1 }}
-        >
-          About Us
-        </motion.h2> */}
-
-        {/* Animated Subheading */}
-        {/* <motion.p
-          className="text-gray-300 text-lg md:text-xl mb-12"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.5, duration: 1.2 }}
-        >
-          We are a passionate team dedicated to delivering top-notch digital solutions. 
-          Our mission is to transform ideas into engaging experiences that captivate users.
-        </motion.p> */}
-
         {/* Features Cards */}
         <div className="grid md:grid-cols-3 gap-8">
           {[
             {
               title: "Innovation",
-              desc: "We bring creative and modern solutions to every project.",
+              desc: "We deliver inventive, future-ready solutions that give every project a creativeedge.",
             },
             {
               title: "Expertise",
-              desc: "Our team has extensive experience across multiple domains.",
+              desc: "Our diverse team brings deep technical know-how and versatile experienceto each challenge.",
             },
             {
               title: "Commitment",
-              desc: "We prioritize client satisfaction and high-quality delivery.",
+              desc: "Client success is at the heart of everything—we guarantee quality, reliability, and outstanding service every time.",
             },
           ].map((feature, index) => (
             <motion.div

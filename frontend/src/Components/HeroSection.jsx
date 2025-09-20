@@ -78,8 +78,9 @@ const HeroSection = () => {
               UI/UX Design
             </h3>
             <p className="text-sm text-gray-600">
-              Creating elegant, user-centric designs that align brand identity
-              with seamless usability across web and mobile platforms.
+              Crafting intuitive, user-centered designs that blend aesthetics
+              with functionality. We create seamless digital experiences
+              optimized for engagement across web and mobile platforms.
             </p>
           </div>
 
@@ -89,8 +90,9 @@ const HeroSection = () => {
               Web Development
             </h3>
             <p className="text-sm text-gray-600">
-              Delivering high-performing websites with modern stacks like React,
-              Next.js, and Tailwind — optimized for speed and scalability.
+              Building high-performance websites with modern frameworks like
+              React, Next.js, and Node.js. Optimized for speed, scalability, and
+              exceptional user experience.
             </p>
           </div>
 
@@ -100,8 +102,9 @@ const HeroSection = () => {
               App Development
             </h3>
             <p className="text-sm text-gray-600">
-              Building robust mobile applications that connect businesses with
-              users through intuitive and reliable digital products.
+              Developing robust mobile and web applications that connect
+              businesses with users through intuitive interfaces and reliable
+              digital solutions.
             </p>
           </div>
 
@@ -111,8 +114,9 @@ const HeroSection = () => {
               Testing & QA
             </h3>
             <p className="text-sm text-gray-600">
-              Ensuring performance, security, and flawless user journeys through
-              rigorous manual and automated testing processes.
+              Ensuring flawless performance through comprehensive manual and
+              automated testing processes. Your applications launch bug-free and
+              secure.
             </p>
           </div>
 
@@ -122,8 +126,9 @@ const HeroSection = () => {
               AI & Automation
             </h3>
             <p className="text-sm text-gray-600">
-              Leveraging Artificial Intelligence and automation to drive smarter
-              workflows, predictive insights, and innovative user experiences.
+              Integrating artificial intelligence and automation to enhance
+              workflows, provide predictive insights, and create smarter user
+              experiences.
             </p>
           </div>
 
@@ -133,14 +138,13 @@ const HeroSection = () => {
               Cloud & Deployment
             </h3>
             <p className="text-sm text-gray-600">
-              Scalable hosting and cloud-native deployment strategies that
-              ensure uptime, speed, and secure digital infrastructure.
+              Scalable cloud hosting and deployment solutions ensuring maximum up time, security, and global performance for your digital infrastructure.
             </p>
           </div>
         </div>
 
         <p className="mt-10 text-sm text-gray-500 italic max-w-2xl mx-auto">
-          “From design to deployment — we engineer the future of digital
+          “From design to deployment — we engineers are the future of digital
           experiences.”
         </p>
       </div>

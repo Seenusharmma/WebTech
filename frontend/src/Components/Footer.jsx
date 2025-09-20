@@ -14,7 +14,7 @@ const socialLinks = [
   },
   {
     icon: <FaInstagram className="text-pink-700 hover:text-pink-900" />,
-    url: "https://www.instagram.com/webui.build/",
+    url: "https://www.instagram.com/webui.team/",
   },
   {
     icon: <FaLinkedin className="text-blue-700" />,

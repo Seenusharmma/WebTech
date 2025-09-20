@@ -1,39 +1,44 @@
-// src/components/Reviews.jsx
-import React, { useState, useRef, useEffect } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Pagination, Autoplay } from "swiper/modules";
 import { motion } from "framer-motion";
+import "swiper/css";
+import "swiper/css/pagination";
+import { useState, useEffect, useRef } from "react";
 
-const API_URL = "https://web-tech-q3bf.onrender.com/api/reviews";
+export default function Testimonials() {
+  const testimonials = [
+    {
+      name: "Abhijit Sahu",
+      role: "Founder, Snatchers",
+      text: "This team built an amazing website for our company. The process was smooth, and the results exceeded expectations.",
+    },
+    {
+      name: "Ms Karan",
+      role: "Founder, M/S Karan Enterprises",
+      text: "We loved their attention to detail and creative approach. Our Webn App launch was a big success thanks to their work.",
+    },
+    {
+      name: "Mayank Kumar",
+      role: "Founder, CGU Marketplace",
+      text: "Professional, responsive, and highly skilled team. I’d definitely work with them again for future projects.",
+    },
+    {
+      name: "Ranjit Sharma",
+      role: "Founder, MyKart",
+      text: "Their development expertise helped us bring our vision to life with great quality and timely delivery.",
+    },
+  ];
 
-// ✅ Dummy reviews (always shown, backend reviews come on top)
-const dummyReviews = [
-  {
-    id: "dummy1",
-    name: "Rahul Sharma",
-    role: "CEO, Creative Minds",
-    feedback: "The team delivered our project on time with outstanding quality!",
-  },
-  {
-    id: "dummy2",
-    name: "Priya Patel",
-    role: "Marketing Head, Bright Ads",
-    feedback: "Fantastic UI/UX design, it really boosted our brand image.",
-  },
-  {
-    id: "dummy3",
-    name: "Amit Verma",
-    role: "Founder, EduTech Hub",
-    feedback: "They built a scalable and responsive platform for our startup.",
-  },
-];
-
-const Reviews = () => {
+  // 🔹 States
   const [reviews, setReviews] = useState([]);
   const [form, setForm] = useState({ name: "", role: "", feedback: "" });
   const [showForm, setShowForm] = useState(false);
 
   const containerRef = useRef(null);
 
-  // 🔹 Fetch reviews on load
+  const API_URL = "https://web-tech-q3bf.onrender.com/api/reviews";
+  const dummyReviews = testimonials;
+
   useEffect(() => {
     fetchReviews();
   }, []);
@@ -52,7 +57,6 @@ const Reviews = () => {
   const handleChange = (e) =>
     setForm({ ...form, [e.target.name]: e.target.value });
 
-  // 🔹 Submit review to backend
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (form.name && form.role && form.feedback) {
@@ -60,14 +64,11 @@ const Reviews = () => {
         const res = await fetch(API_URL, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            ...form,
-            avatar: "/images/default-avatar.jpg",
-          }),
+          body: JSON.stringify(form),
         });
 
         const savedReview = await res.json();
-        setReviews([savedReview, ...reviews]); // Add new review on top
+        setReviews([savedReview, ...reviews]);
         setForm({ name: "", role: "", feedback: "" });
         setShowForm(false);
       } catch (error) {
@@ -76,42 +77,35 @@ const Reviews = () => {
     }
   };
 
-  // 🔹 Auto sliding effect
+  // 🔹 Auto sliding (custom effect if needed)
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
 
     const slideInterval = setInterval(() => {
-      // Scroll by 1 card width
       const cardWidth = container.querySelector("div")?.offsetWidth || 300;
       if (
         container.scrollLeft + container.offsetWidth >=
         container.scrollWidth
       ) {
-        // Reset to start when reaching end
         container.scrollTo({ left: 0, behavior: "smooth" });
       } else {
-        container.scrollBy({ left: cardWidth + 24, behavior: "smooth" }); // +24px for gap
+        container.scrollBy({ left: cardWidth + 24, behavior: "smooth" });
       }
-    }, 3000); // slide every 3 sec
+    }, 3000);
 
     return () => clearInterval(slideInterval);
   }, [reviews]);
 
   return (
-    <section className="bg-gray-900 text-white py-20 px-5 md:px-20">
-      <div className="max-w-6xl mx-auto text-center">
-        <motion.h2
-          className="text-4xl md:text-5xl font-bold mb-6 tracking-wide"
-          initial={{ opacity: 0, y: -50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1 }}
-        >
+    <section className="py-16 bg-gradient-to-t from-gray-100 to-gray-50 text-black rounded-b-4xl mt-10">
+      <div className="max-w-7xl mx-auto px-6">
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-center mb-6">
           What Our Clients Say
-        </motion.h2>
+        </h2>
 
         <motion.p
-          className="text-gray-400 text-lg md:text-xl mb-12"
+          className="text-gray-500 text-lg md:text-xl text-center"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.5, duration: 1.2 }}
@@ -121,14 +115,14 @@ const Reviews = () => {
 
         <button
           onClick={() => setShowForm(!showForm)}
-          className="mb-8 px-6 py-2 rounded-lg bg-gradient-to-r from-purple-500 via-pink-500 to-blue-500 hover:scale-105 transition-transform duration-300 font-semibold"
+          className="mt-6 mb-8 px-6 py-2 rounded-lg bg-black text-white hover:scale-105 transition-transform duration-300 font-semibold block mx-auto"
         >
           {showForm ? "Close Form" : "Add Your Review"}
         </button>
 
         {showForm && (
           <motion.form
-            className="bg-gray-800 p-6 rounded-2xl shadow-lg mb-12 max-w-2xl mx-auto"
+            className="bg-gray-100 p-6 rounded-2xl shadow-xl mb-12 max-w-2xl mx-auto"
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
@@ -140,7 +134,7 @@ const Reviews = () => {
               value={form.name}
               onChange={handleChange}
               placeholder="Your Name"
-              className="w-full mb-4 px-4 py-2 rounded-lg bg-gray-700 text-white focus:outline-none"
+              className="w-full mb-4 px-4 py-2 rounded-lg bg-gray-300 text-black focus:outline-none"
             />
             <input
               type="text"
@@ -148,68 +142,52 @@ const Reviews = () => {
               value={form.role}
               onChange={handleChange}
               placeholder="Your Role / Company"
-              className="w-full mb-4 px-4 py-2 rounded-lg bg-gray-700 text-white focus:outline-none"
+              className="w-full mb-4 px-4 py-2 rounded-lg bg-gray-300 text-black focus:outline-none"
             />
             <textarea
               name="feedback"
               value={form.feedback}
               onChange={handleChange}
               placeholder="Your Feedback"
-              className="w-full mb-4 px-4 py-2 rounded-lg bg-gray-700 text-white focus:outline-none"
+              className="w-full mb-4 px-4 py-2 rounded-lg bg-gray-300 text-black focus:outline-none"
               rows="4"
             />
             <button
               type="submit"
-              className="px-6 py-2 rounded-lg bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 hover:scale-105 transition-transform duration-300 font-semibold"
+              className="px-6 py-2 rounded-lg bg-black text-white hover:scale-105 transition-transform duration-300 font-semibold block mx-auto"
             >
               Submit Review
             </button>
           </motion.form>
         )}
 
-        {/* ✅ Review Cards */}
-        <div className="relative">
-          <div
-            ref={containerRef}
-            className="flex overflow-x-auto space-x-6 py-6 px-2 scroll-smooth no-scrollbar"
-          >
-            {reviews.map((review, index) => (
-              <div
-                key={review._id || review.id || index}
-                className="relative min-w-[280px] max-w-[320px] flex-shrink-0"
-              >
-                <motion.div
-                  className="bg-gray-800 p-6 pt-14 rounded-2xl shadow-xl hover:scale-105 transition-transform duration-500 relative overflow-hidden"
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.2 * index, duration: 0.8 }}
-                >
-                  <p className="text-gray-300 text-md mb-4">
-                    {review.feedback}
-                  </p>
-                  <h3 className="text-white font-semibold text-lg">
-                    {review.name}
-                  </h3>
-                  <p className="text-purple-400 text-sm">{review.role}</p>
-
-                  <motion.div
-                    className="absolute top-0 left-0 w-full h-full rounded-2xl bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500 opacity-10 blur-3xl pointer-events-none"
-                    animate={{ rotate: [0, 360] }}
-                    transition={{
-                      repeat: Infinity,
-                      duration: 25,
-                      ease: "linear",
-                    }}
-                  />
-                </motion.div>
+        <Swiper
+          modules={[Pagination, Autoplay]}
+          pagination={{ clickable: true }}
+          autoplay={{ delay: 4500, disableOnInteraction: false }}
+          spaceBetween={30}
+          breakpoints={{
+            0: { slidesPerView: 1 },
+            640: { slidesPerView: 1 },
+            768: { slidesPerView: 2 },
+            1024: { slidesPerView: 3 },
+          }}
+        >
+          {reviews.map((t, i) => (
+            <SwiperSlide key={i}>
+              <div className="bg-white rounded-3xl p-8 h-full flex flex-col transform transition duration-500 hover:-translate-y-2 border border-gray-300">
+                <p className="text-gray-700 italic mb-6 flex-grow leading-relaxed">
+                  “{t.text || t.feedback}”
+                </p>
+                <div className="mt-auto">
+                  <h4 className="font-semibold text-gray-900">{t.name}</h4>
+                  <p className="text-sm text-gray-500">{t.role}</p>
+                </div>
               </div>
-            ))}
-          </div>
-        </div>
+            </SwiperSlide>
+          ))}
+        </Swiper>
       </div>
     </section>
   );
-};
-
-export default Reviews;
+}

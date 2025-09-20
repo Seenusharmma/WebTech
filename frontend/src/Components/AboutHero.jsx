@@ -38,8 +38,7 @@ export default function AboutHero() {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.5, duration: 1.2 }}
         >
-          We are a passionate team dedicated to delivering top-notch digital solutions. 
-          Our mission is to transform ideas into engaging experiences that captivate users.
+          WebUi transforms business visions into powerful digital experiences. Founded by passionate developers who understand the startup journey, wespecialize in creating responsive, high-performance websites using moderntechnologies like React, Next.js, and Tailwind CSS.
         </motion.p>
           <button className="px-6 py-3 bg-indigo-600 hover:bg-indigo-500 rounded-xl font-semibold transition">
             Learn More
