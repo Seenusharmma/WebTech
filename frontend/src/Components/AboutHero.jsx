@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 
 export default function AboutHero() {
   return (
-    <section className="relative bg-gray-900 text-white py-16 px-6 lg:px-20">
+    <section className="relative bg-gray-900 text-white py-16 px-6 lg:px-20 rounded-b-4xl ">
       <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
         
         {/* Left: Video */}

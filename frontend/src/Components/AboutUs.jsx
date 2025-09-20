@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 
 const AboutUs = () => {
   return (
-    <section className="bg-gray-900 text-white  py-5 px-5 md:px-20">
+    <section className="bg-gray-900 text-white  py-5 px-5 md:px-20 rounded-xl">
       <div className="max-w-6xl mx-auto text-center">
         {/* Features Cards */}
         <div className="grid md:grid-cols-3 gap-8">
