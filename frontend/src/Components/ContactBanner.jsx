@@ -22,7 +22,7 @@ export default function ContactBanner() {
         {/* Use a native button and navigate programmatically to avoid Link-related surprises */}
         <button
           onClick={() => navigate("/contact")}
-          className="bg-gray-600 text-white hover:bg-red-600 hover:text-white font-semibold px-6 py-3 rounded-md transition z-20"
+          className="bg-gray-100 text-black hover:bg-gray-200 hover:text-black font-semibold px-6 py-3 rounded-md transition z-20"
         >
           CONTACT US
         </button>

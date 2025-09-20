@@ -62,40 +62,9 @@ const techStacks = [
 const AboutMid = () => {
   return (
     <div className="min-h-screen flex flex-col w-full">
-      {/* About Us Section */}
-      <section id="about" className="flex flex-col items-center px-6 md:px-12 lg:px-20 py-16 w-full">
-        <div className="grid md:grid-cols-2 gap-10 w-full">
-          {/* Left Image */}
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
-            className="bg-gray-200 rounded-lg h-80 flex items-center justify-center shadow-md overflow-hidden w-full"
-          >
-            <img src="/Myweb.png" alt="Website Preview" className="object-cover w-full h-full" />
-          </motion.div>
-
-          {/* Right Details */}
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
-            className="bg-white shadow-md rounded-xl p-8 w-full"
-          >
-            <h3 className="text-black text-3xl font-bold mb-3">WebUi</h3>
-            <p className="text-gray-600">Established Date: 2024</p>
-            <p className="mt-4 text-gray-700 leading-relaxed">
-              We build scalable and modern web & app solutions tailored for startups and enterprises. 
-              We focus on crafting quality UI/UX experiences, seamless mobile apps, and immersive graphics 
-              using industry-leading tools.
-            </p>
-          </motion.div>
-        </div>
-      </section>
-
       {/* Technologies Section */}
       <section className="bg-gradient-to-r from-gray-50 via-white to-gray-100 py-16 px-6 md:px-12 lg:px-20 w-full">
-        <h3 className="text-center text-3xl font-bold mb-12">Technologies We Use</h3>
+        <h3 className="text-center text-3xl font-bold mb-20">Technologies We Use</h3>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 w-full">
           {techStacks.map((tech, index) => (
             <motion.div
