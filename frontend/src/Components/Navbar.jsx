@@ -26,11 +26,12 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
         {/* Logo */}
         <motion.h1
-          className="text-2xl sm:text-3xl font-extrabold bg-white bg-clip-text text-transparent"
-          whileHover={{ scale: 1.1 }}
-        >
-          <Link to="/">WebUi</Link>
-        </motion.h1>
+  className="font-caveat font-normal text-2xl sm:text-3xl bg-white bg-clip-text text-transparent"
+  whileHover={{ scale: 1.1 }}
+>
+  <Link to="/">WebUi</Link>
+</motion.h1>
+
 
         {/* Desktop Menu */}
         <ul className="hidden md:flex space-x-8 lg:space-x-12 text-white font-medium">
