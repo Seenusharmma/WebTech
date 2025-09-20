@@ -28,27 +28,28 @@ const Stepper = () => {
     const interval = setInterval(() => {
       setCurrentStep((prev) => (prev === steps.length ? 1 : prev + 1));
     }, 3000); // switch every 3 seconds
-
     return () => clearInterval(interval);
   }, []);
 
   return (
     <div className="w-full flex flex-col items-center px-4 py-10">
-      <h2 className="text-2xl font-bold text-gray-800 mb-8">Our Process</h2>
+      <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-8">
+        Our Process
+      </h2>
 
       {/* Stepper */}
-      <div className="flex md:flex-row flex-row md:justify-between justify-start md:space-x-0 space-x-6 overflow-x-auto w-full max-w-5xl relative">
+      <div className="flex flex-row md:flex-row md:justify-between justify-start md:space-x-0 space-x-6 overflow-x-auto w-full max-w-5xl relative pb-4 scrollbar-hide">
         {steps.map((step, index) => (
           <motion.div
             key={step.id}
-            className="flex flex-col items-center md:w-full min-w-[70px] relative"
+            className="flex flex-col items-center md:w-full min-w-[70px] sm:min-w-[90px] relative"
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: index * 0.2 }}
+            transition={{ delay: index * 0.15 }}
           >
             {/* Circle */}
             <div
-              className={`flex items-center justify-center w-12 h-12 rounded-full transition-colors duration-300 ${
+              className={`flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 rounded-full transition-colors duration-300 ${
                 currentStep >= step.id
                   ? "bg-blue-600 text-white"
                   : "bg-gray-200 text-gray-600"
@@ -59,7 +60,7 @@ const Stepper = () => {
 
             {/* Label */}
             <p
-              className={`mt-2 text-xs sm:text-sm font-medium text-center ${
+              className={`mt-2 text-xs sm:text-sm md:text-base font-medium text-center ${
                 currentStep >= step.id ? "text-blue-600" : "text-gray-500"
               }`}
             >
@@ -89,18 +90,22 @@ const Stepper = () => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
-        className="mt-10 p-6 rounded-xl bg-gray-100 shadow-md max-w-lg text-center"
+        className="mt-10 p-5 sm:p-6 rounded-xl bg-gray-100 shadow-md w-full max-w-lg text-center"
       >
-        <h3 className="text-lg font-semibold text-blue-600 mb-2">
+        <h3 className="text-base sm:text-lg md:text-xl font-semibold text-blue-600 mb-2">
           Step {currentStep}: {steps.find((s) => s.id === currentStep)?.label}
         </h3>
-        <p className="text-gray-600">
+        <p className="text-gray-600 text-sm sm:text-base leading-relaxed">
           {currentStep === 1 && "Reach out to us and share your requirements."}
-          {currentStep === 2 && "We will discuss ideas, goals, and solutions together."}
-          {currentStep === 3 && "Our team creates stunning designs for your project."}
+          {currentStep === 2 &&
+            "We will discuss ideas, goals, and solutions together."}
+          {currentStep === 3 &&
+            "Our team creates stunning designs for your project."}
           {currentStep === 4 && "We provide a clear pricing structure."}
-          {currentStep === 5 && "We start building your dream project with precision."}
-          {currentStep === 6 && "Rigorous testing ensures quality and performance."}
+          {currentStep === 5 &&
+            "We start building your dream project with precision."}
+          {currentStep === 6 &&
+            "Rigorous testing ensures quality and performance."}
           {currentStep === 7 && "Finally, we deliver the project successfully to you."}
         </p>
       </motion.div>
