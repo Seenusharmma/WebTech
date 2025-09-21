@@ -1,16 +1,23 @@
 import express from "express";
 import mongoose from "mongoose";
 import cors from "cors";
+import fetch from "node-fetch"; // 👈 required to call OpenAI API
+import dotenv from "dotenv";
+
+dotenv.config();
 
 const app = express();
 app.use(cors());
 app.use(express.json());
 
 // ✅ MongoDB Connection
-mongoose.connect("mongodb+srv://roshansharma7250_db_user:AHeEzPUF1pqF1XwQ@cluster0.foitgj8.mongodb.net/webtech", {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+mongoose.connect(
+  "mongodb+srv://roshansharma7250_db_user:AHeEzPUF1pqF1XwQ@cluster0.foitgj8.mongodb.net/webtech",
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  }
+);
 
 // ✅ Schema + Model
 const reviewSchema = new mongoose.Schema({
@@ -47,6 +54,36 @@ app.delete("/api/reviews/:id", async (req, res) => {
     res.json({ message: "Review deleted" });
   } catch (error) {
     res.status(400).json({ error: error.message });
+  }
+});
+
+// ✅ Chatbot API Route
+app.post("/api/chat", async (req, res) => {
+  try {
+    const { message } = req.body;
+
+    const response = await fetch("https://api.openai.com/v1/chat/completions", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${process.env.OPENAI_API_KEY}`, // 👈 store your API key in .env
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        model: "gpt-3.5-turbo", // or "gpt-4"
+        messages: [{ role: "user", content: message }],
+      }),
+    });
+
+    const data = await response.json();
+
+    if (data.error) {
+      return res.status(400).json({ error: data.error.message });
+    }
+
+    res.json({ reply: data.choices[0].message.content });
+  } catch (error) {
+    console.error("Chatbot error:", error);
+    res.status(500).json({ error: "Something went wrong with chatbot" });
   }
 });
 
