@@ -6,7 +6,7 @@ import "swiper/css/pagination";
 import { useState, useEffect, useRef } from "react";
 
 export default function Testimonials() {
-  const testimonials = [
+  const staticTestimonials = [
     {
       name: "Abhijit Sahu",
       role: "Founder, Snatchers",
@@ -30,29 +30,35 @@ export default function Testimonials() {
   ];
 
   // 🔹 States
-  const [reviews, setReviews] = useState([]);
+  const [reviews, setReviews] = useState(staticTestimonials); // load static first
+  const [backendReviews, setBackendReviews] = useState([]);   // keep backend separate
   const [form, setForm] = useState({ name: "", role: "", feedback: "" });
   const [showForm, setShowForm] = useState(false);
 
   const containerRef = useRef(null);
 
   const API_URL = "https://web-tech-q3bf.onrender.com/api/reviews";
-  const dummyReviews = testimonials;
 
+  // 🔹 Fetch backend reviews AFTER initial render
   useEffect(() => {
-    fetchReviews();
-  }, []);
+    const fetchReviews = async () => {
+      try {
+        const res = await fetch(API_URL);
+        const data = await res.json();
 
-  const fetchReviews = async () => {
-    try {
-      const res = await fetch(API_URL);
-      const data = await res.json();
-      setReviews([...dummyReviews, ...data]);
-    } catch (error) {
-      console.error("Error fetching reviews:", error);
-      setReviews(dummyReviews);
-    }
-  };
+        // render static first → append backend
+        setBackendReviews(data);
+        setReviews([...staticTestimonials, ...data]);
+      } catch (error) {
+        console.error("Error fetching reviews:", error);
+      }
+    };
+
+    // Delay fetching slightly (optional UX choice)
+    const timer = setTimeout(fetchReviews, 1000);
+
+    return () => clearTimeout(timer);
+  }, []);
 
   const handleChange = (e) =>
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -68,7 +74,11 @@ export default function Testimonials() {
         });
 
         const savedReview = await res.json();
-        setReviews([savedReview, ...reviews]);
+
+        // add new review to backendReviews + reviews
+        setBackendReviews([savedReview, ...backendReviews]);
+        setReviews([...staticTestimonials, savedReview, ...backendReviews]);
+
         setForm({ name: "", role: "", feedback: "" });
         setShowForm(false);
       } catch (error) {
@@ -76,26 +86,6 @@ export default function Testimonials() {
       }
     }
   };
-
-  // 🔹 Auto sliding (custom effect if needed)
-  useEffect(() => {
-    const container = containerRef.current;
-    if (!container) return;
-
-    const slideInterval = setInterval(() => {
-      const cardWidth = container.querySelector("div")?.offsetWidth || 300;
-      if (
-        container.scrollLeft + container.offsetWidth >=
-        container.scrollWidth
-      ) {
-        container.scrollTo({ left: 0, behavior: "smooth" });
-      } else {
-        container.scrollBy({ left: cardWidth + 24, behavior: "smooth" });
-      }
-    }, 3000);
-
-    return () => clearInterval(slideInterval);
-  }, [reviews]);
 
   return (
     <section className="py-16 bg-gradient-to-t from-gray-100 to-gray-50 text-black rounded-b-4xl mt-10">
