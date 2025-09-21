@@ -53,7 +53,7 @@ export default function Services() {
   ];
 
   return (
-    <section className="min-h-screen bg-white text-gray-900 py-16 px-6">
+    <section className="min-h-screen bg-white text-gray-900 py-16 px-6 mt-8">
       <div className="max-w-7xl mx-auto">
         <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-16">
           Our Services
