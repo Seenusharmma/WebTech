@@ -67,7 +67,7 @@ const HeroSection = () => {
       {/* Bottom Content Section */}
       {/* Bottom Content Section */}
       <div className="bg-white text-center px-4 sm:px-6 py-12">
-        <h2 className="text-xl sm:text-2xl md:text-3xl font-semibold text-gray-800 mb-8">
+        <h2 className="text-3xl sm:text-2xl md:text-3xl font-semibold text-gray-800 mb-8">
           Our Technology Services
         </h2>
 
