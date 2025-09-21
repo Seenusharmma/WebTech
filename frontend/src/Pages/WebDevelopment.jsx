@@ -1,4 +1,4 @@
- //src/pages/WebDevelopment.jsx ----- This the routing pages @Neha
+// src/pages/WebDevelopment.jsx
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 
@@ -8,36 +8,38 @@ export default function WebDevelopment() {
       id: 1,
       title: "Railway Website",
       url: "https://www.figma.com/design/8jnZ8eR6ko7IngJAEv93Es/IRCTC-Redesign---ux.alok--Community---Copy-?node-id=9-944&p=f",
-      image: "https://s3-alpha.figma.com/hub/file/2211011021468060144/19b79ba9-e61c-4c2c-b86a-7fa081e18daf-cover.png",
+      image:
+        "https://s3-alpha.figma.com/hub/file/2211011021468060144/19b79ba9-e61c-4c2c-b86a-7fa081e18daf-cover.png",
     },
     {
       id: 2,
       title: "Construction Website",
       url: "https://www.figma.com/community/file/1132260373602410007/web-design-for-construction-company",
-      image: "https://s3-alpha.figma.com/hub/file/6172254313/e59be541-97c9-403b-997a-3c8636b9342d-cover.png",
+      image:
+        "https://s3-alpha.figma.com/hub/file/6172254313/e59be541-97c9-403b-997a-3c8636b9342d-cover.png",
     },
     {
       id: 3,
       title: "Library Management System",
       url: "https://www.figma.com/community/file/1264939926166709073/library-management-system",
-      image: "https://files.codingninjas.in/article_images/custom-upload-1681454804.webp",
+      image:
+        "https://files.codingninjas.in/article_images/custom-upload-1681454804.webp",
     },
     {
       id: 4,
       title: "E-Commerce Website",
       url: "https://www.figma.com/community/file/1184498378829556800/ecommerce-website-design",
-      image: "https://templatesjungle.com/wp-content/uploads/edd/2022/01/ultras-casual-wear-ecommerce-figma-template-cover-1024x768.jpg",
+      image:
+        "https://templatesjungle.com/wp-content/uploads/edd/2022/01/ultras-casual-wear-ecommerce-figma-template-cover-1024x768.jpg",
     },
   ];
 
   return (
-    <section className="min-h-screen bg-gradient-to-b from-black via-indigo-950 to-black text-white py-16 px-6">
+    <section className="min-h-screen bg-white text-gray-900 py-16 px-6">
       <div className="max-w-7xl mx-auto">
         {/* Heading */}
         <motion.h2
-          className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-center mb-12 mt-8
-          bg-gradient-to-r from-green-400 via-blue-500 to-purple-600 
-          bg-clip-text text-transparent drop-shadow-[0_0_25px_#22c55e]"
+          className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-14"
           initial={{ opacity: 0, y: -40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
@@ -50,33 +52,32 @@ export default function WebDevelopment() {
           {webDesigns.map((design, i) => (
             <motion.div
               key={design.id}
-              className="rounded-xl overflow-hidden border border-gray-700 shadow-lg bg-gray-900 group"
+              className="rounded-2xl overflow-hidden border border-gray-200 shadow-md bg-white group hover:shadow-xl transition-shadow"
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: i * 0.2, duration: 0.8 }}
             >
               {/* Image Preview */}
-              <div className="relative w-full h-60 overflow-hidden">
+              <div className="relative w-full h-64 overflow-hidden">
                 <img
                   src={design.image}
                   alt={design.title}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
               </div>
 
               {/* Title */}
-              <h3 className="text-lg font-semibold text-center py-3 bg-gradient-to-r from-green-400 to-blue-500 text-transparent bg-clip-text">
+              <h3 className="text-lg font-semibold text-center py-4 text-gray-700 group-hover:text-gray-900 transition-colors">
                 {design.title}
               </h3>
 
               {/* Button */}
-              <div className="flex justify-center pb-4">
+              <div className="flex justify-center pb-6">
                 <a
                   href={design.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-5 py-2 rounded-lg bg-gradient-to-r from-green-400 via-blue-500 to-purple-600 
-                  hover:opacity-90 transition font-medium shadow-md"
+                  className="px-6 py-2 rounded-lg bg-black text-white font-medium shadow hover:bg-gray-800 transition"
                 >
                   View on Figma
                 </a>
@@ -86,11 +87,10 @@ export default function WebDevelopment() {
         </div>
 
         {/* Back button */}
-        <div className="text-center mt-12">
+        <div className="text-center mt-16">
           <Link
             to="/"
-            className="px-6 py-3 rounded-xl bg-gradient-to-r from-green-400 via-blue-500 to-purple-600 
-            hover:opacity-90 transition font-semibold shadow-lg"
+            className="px-6 py-3 rounded-lg bg-black text-white font-semibold shadow hover:bg-gray-800 transition"
           >
             ⬅ Back to Services
           </Link>

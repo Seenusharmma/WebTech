@@ -14,6 +14,8 @@ import FigmaDesigns from './Pages/FigmaDesigns.jsx'
 import WebDevelopment from './Pages/WebDevelopment.jsx'
 import AppDevelopment from './Pages/AppDevelopment.jsx'
 import GraphicsDesign from './Pages/GraphicsDesign.jsx'
+import CloudDeployment from './Components/CloudDeployment.jsx'
+import AiAutomation from './Components/AiAutomation.jsx'
 
 const App = () => {
   return (
@@ -32,6 +34,8 @@ const App = () => {
             <Route path="/web-development" element={<WebDevelopment />} />
             <Route path="/app-development" element={<AppDevelopment />} />
             <Route path="/graphics-design" element={<GraphicsDesign />} />
+            <Route path='/cloud-deployment' element={<CloudDeployment/>} />
+            <Route path='/ai-automation' element={<AiAutomation/>} />
         </Routes>
         <Footer/>
     </div>

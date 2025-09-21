@@ -1,4 +1,4 @@
-// src/pages/GraphicsDesign.jsx this the link routing @Neha
+// src/pages/GraphicsDesign.jsx
 import { motion } from "framer-motion";
 import { Telescope } from "lucide-react";
 import { Link } from "react-router-dom";
@@ -36,13 +36,13 @@ export default function GraphicsDesign() {
   ];
 
   return (
-    <section className="min-h-screen bg-gradient-to-b from-black via-indigo-950 to-black text-white py-16 px-6 mt-8">
+    <section className="min-h-screen bg-gray-100 text-dark py-16 px-6 mt-8">
       <div className="max-w-7xl mx-auto">
         {/* Heading */}
         <motion.h2
-          className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-center mb-16 
-          bg-gradient-to-r from-yellow-400 via-orange-500 to-red-500 
-          bg-clip-text text-transparent drop-shadow-[0_0_25px_#facc15]"
+          className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-center mb-12 pt-4 leading-snug
+  bg-gray-900 
+  bg-clip-text text-transparent drop-shadow-[0_0_25px_#fff]"
           initial={{ opacity: 0, y: -40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
@@ -52,11 +52,11 @@ export default function GraphicsDesign() {
 
         {/* Icon & intro */}
         <div className="flex flex-col items-center text-center mb-14">
-          <Telescope size={56} className="mb-4 text-yellow-400" />
-          <p className="text-lg text-gray-300 max-w-2xl">
+          <Telescope size={56} className="mb-4 text-purple-600" />
+          <p className="text-lg text-gray-600 max-w-2xl">
             We create stunning visuals and branding materials to give your
-            business a unique identity. From logos to social media kits, we bring
-            creativity to life with our design expertise.
+            business a unique identity. From logos to social media kits, we
+            bring creativity to life with our design expertise.
           </p>
         </div>
 
@@ -65,7 +65,7 @@ export default function GraphicsDesign() {
           {designs.map((item, i) => (
             <motion.div
               key={item.id}
-              className="rounded-xl overflow-hidden border border-gray-700 shadow-xl bg-gray-900 hover:scale-[1.03] transition-transform"
+              className="rounded-xl overflow-hidden border border-gray-500 shadow-xl bg-gray-300 hover:scale-[1.03] transition-transform"
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: i * 0.2, duration: 0.8 }}
@@ -76,10 +76,10 @@ export default function GraphicsDesign() {
                 className="w-full h-56 object-cover"
               />
               <div className="p-6">
-                <h3 className="text-xl font-semibold mb-2 text-gradient bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 to-orange-500">
+                <h3 className="text-xl font-semibold mb-2 text-gradient bg-clip-text text-transparent bg-gray-800">
                   {item.title}
                 </h3>
-                <p className="text-gray-300 text-sm">{item.desc}</p>
+                <p className="text-gray-800 text-sm">{item.desc}</p>
               </div>
             </motion.div>
           ))}
@@ -88,9 +88,8 @@ export default function GraphicsDesign() {
         {/* Back button */}
         <div className="text-center mt-16">
           <Link
-            to="/"
-            className="px-6 py-3 rounded-xl bg-gradient-to-r from-yellow-400 via-orange-500 to-red-600 
-            hover:opacity-90 transition font-semibold shadow-lg"
+            to="/services"
+            className="px-6 py-3 rounded-xl bg-black text-white hover:opacity-90 transition font-semibold shadow-lg"
           >
             ⬅ Back to Services
           </Link>

@@ -1,4 +1,4 @@
-// src/pages/AppDevelopment.jsx ----- This the routing pages @Neha
+// src/pages/AppDevelopment.jsx
 import { motion } from "framer-motion";
 import { Smartphone } from "lucide-react";
 import { Link } from "react-router-dom";
@@ -29,13 +29,13 @@ export default function AppDevelopment() {
   ];
 
   return (
-    <section className="min-h-screen bg-gradient-to-b from-black via-indigo-950 to-black text-white py-16 px-6 mt-8">
+    <section className="min-h-screen bg-gray-100 text-dark py-16 px-6 mt-8">
       <div className="max-w-7xl mx-auto">
         {/* Heading */}
         <motion.h2
-          className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-center mb-16 
-          bg-gradient-to-r from-pink-500 via-purple-400 to-blue-500 
-          bg-clip-text text-transparent drop-shadow-[0_0_25px_#a855f7]"
+          className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-center mb-12 pt-4 leading-snug
+  bg-gray-900 
+  bg-clip-text text-transparent drop-shadow-[0_0_25px_#fff]"
           initial={{ opacity: 0, y: -40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
@@ -45,8 +45,8 @@ export default function AppDevelopment() {
 
         {/* Icon & intro */}
         <div className="flex flex-col items-center text-center mb-14">
-          <Smartphone size={56} className="mb-4 text-pink-500" />
-          <p className="text-lg text-gray-300 max-w-2xl">
+          <Smartphone size={56} className="mb-4 text-green-600" />
+          <p className="text-lg text-gray-600 max-w-2xl">
             We craft modern, high-performing mobile applications for iOS and
             Android. Our apps are built with clean UI, smooth UX, and powerful
             functionality to keep your users engaged.
@@ -58,7 +58,7 @@ export default function AppDevelopment() {
           {apps.map((app, i) => (
             <motion.div
               key={app.id}
-              className="rounded-xl overflow-hidden border border-gray-700 shadow-xl bg-gray-900 hover:scale-[1.03] transition-transform"
+              className="rounded-xl overflow-hidden border border-gray-500 shadow-xl bg-gray-300 hover:scale-[1.03] transition-transform"
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: i * 0.2, duration: 0.8 }}
@@ -69,10 +69,10 @@ export default function AppDevelopment() {
                 className="w-full h-56 object-cover"
               />
               <div className="p-6">
-                <h3 className="text-xl font-semibold mb-2 text-gradient bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-500">
+                <h3 className="text-xl font-semibold mb-2 text-gradient bg-clip-text text-transparent bg-gray-800">
                   {app.title}
                 </h3>
-                <p className="text-gray-300 text-sm">{app.desc}</p>
+                <p className="text-gray-800 text-sm">{app.desc}</p>
               </div>
             </motion.div>
           ))}
@@ -81,9 +81,8 @@ export default function AppDevelopment() {
         {/* Back button */}
         <div className="text-center mt-16">
           <Link
-            to="/"
-            className="px-6 py-3 rounded-xl bg-gradient-to-r from-pink-500 via-purple-500 to-blue-600 
-            hover:opacity-90 transition font-semibold shadow-lg"
+            to="/services"
+            className="px-6 py-3 rounded-xl bg-black text-white hover:opacity-90 transition font-semibold shadow-lg"
           >
             ⬅ Back to Services
           </Link>
