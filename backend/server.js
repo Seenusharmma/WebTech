@@ -1,7 +1,6 @@
 import express from "express";
 import mongoose from "mongoose";
 import cors from "cors";
-import fetch from "node-fetch"; // 👈 required to call OpenAI API
 import dotenv from "dotenv";
 
 dotenv.config();
@@ -57,30 +56,36 @@ app.delete("/api/reviews/:id", async (req, res) => {
   }
 });
 
-// ✅ Chatbot API Route
+// ✅ Chatbot API Route (Gemini via fetch)
 app.post("/api/chat", async (req, res) => {
   try {
     const { message } = req.body;
 
-    const response = await fetch("https://api.openai.com/v1/chat/completions", {
+    // ⚠️ Move this to .env for safety
+    const API_KEY = process.env.GEMINI_API_KEY || "AIzaSyCTIcW_htPS3aOJO7nkYxUnn3I9Dm6DHgk";
+    const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${API_KEY}`;
+
+    const response = await fetch(API_URL, {
       method: "POST",
       headers: {
-        Authorization: `Bearer ${process.env.OPENAI_API_KEY}`, // 👈 store your API key in .env
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        model: "gpt-3.5-turbo", // or "gpt-4"
-        messages: [{ role: "user", content: message }],
+        contents: [
+          {
+            parts: [{ text: message }],
+          },
+        ],
       }),
     });
 
     const data = await response.json();
 
-    if (data.error) {
-      return res.status(400).json({ error: data.error.message });
-    }
+    const reply =
+      data?.candidates?.[0]?.content?.parts?.[0]?.text ||
+      "Sorry, I couldn’t generate a reply.";
 
-    res.json({ reply: data.choices[0].message.content });
+    res.json({ reply });
   } catch (error) {
     console.error("Chatbot error:", error);
     res.status(500).json({ error: "Something went wrong with chatbot" });
