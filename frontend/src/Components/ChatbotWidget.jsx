@@ -10,6 +10,7 @@ export default function ChatbotWidget() {
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
 
+  // ⚡ Direct Gemini API Call
   const handleSend = async () => {
     if (!input.trim()) return;
 
@@ -19,15 +20,24 @@ export default function ChatbotWidget() {
     setLoading(true);
 
     try {
-      const res = await fetch("http://localhost:5000/api/chat", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message: input }),
-      });
+      const res = await fetch(
+        "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=AIzaSyCTIcW_htPS3aOJO7nkYxUnn3I9Dm6DHgk",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            contents: [{ parts: [{ text: input }] }],
+          }),
+        }
+      );
 
       const data = await res.json();
-      const botMessage = { text: data.reply, sender: "bot" };
 
+      let botReply =
+        data?.candidates?.[0]?.content?.parts?.[0]?.text ||
+        "⚠️ Sorry, I couldn’t generate a reply.";
+
+      const botMessage = { text: botReply, sender: "bot" };
       setMessages((prev) => [...prev, botMessage]);
     } catch (error) {
       console.error("Chatbot error:", error);
