@@ -8,6 +8,7 @@ const GEMINI_ENDPOINT = (key) =>
 
 export default function ChatbotWidget() {
   const [open, setOpen] = useState(false);
+  const [speakerOn, setSpeakerOn] = useState(true); // 🔊 Speaker toggle
   const [messages, setMessages] = useState([
     {
       text: "👋 Hi! I’m your AI Assistant. Ask me about time, weather, news, crypto or predictions.",
@@ -31,6 +32,7 @@ export default function ChatbotWidget() {
 
   // --- Speaker (Text-to-Speech) ---
   const speak = (text) => {
+    if (!speakerOn) return; // Skip if speaker is OFF
     if ("speechSynthesis" in window) {
       const utterance = new SpeechSynthesisUtterance(text);
       utterance.lang = "en-IN";
@@ -183,7 +185,19 @@ export default function ChatbotWidget() {
           {/* Header */}
           <div className="bg-gray-900 px-4 py-2 flex justify-between items-center">
             <span className="font-semibold">AI Chatbot</span>
-            <button onClick={() => setOpen(false)}>✖</button>
+            <div className="flex items-center gap-2">
+              {/* Speaker toggle */}
+              <button
+                onClick={() => setSpeakerOn(!speakerOn)}
+                className={`px-2 py-1 rounded text-sm ${
+                  speakerOn ? "bg-green-500" : "bg-red-500"
+                }`}
+                title={speakerOn ? "Speaker ON" : "Speaker OFF"}
+              >
+                🔊
+              </button>
+              <button onClick={() => setOpen(false)}>✖</button>
+            </div>
           </div>
 
           {/* Messages */}
@@ -244,11 +258,11 @@ export default function ChatbotWidget() {
       {!open && (
         <button
           onClick={() => setOpen(true)}
-          className="w-14 h-14 rounded-full bg-white flex items-center justify-center shadow-lg"
+          className="w-14 h-14 rounded-full flex items-center justify-center "
         >
           <img
-            src="https://png.pngtree.com/png-clipart/20230401/original/pngtree-smart-chatbot-cartoon-clipart-png-image_9015126.png"
-            className="w-10 h-10"
+            src="/bot.png"
+            className="w-15 h-15"
             alt="Bot"
           />
         </button>
