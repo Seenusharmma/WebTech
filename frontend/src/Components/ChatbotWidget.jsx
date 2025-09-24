@@ -8,7 +8,6 @@ const GEMINI_API_KEY = "AIzaSyCTIcW_htPS3aOJO7nkYxUnn3I9Dm6DHgk";
 const GEMINI_ENDPOINT = (key) =>
   `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${key}`;
 
-// --- Rotating 3D Bot Cube ---
 function RotatingCube() {
   const meshRef = useRef();
   useFrame(() => {
@@ -25,7 +24,6 @@ function RotatingCube() {
   );
 }
 
-// --- BotModel Component ---
 function BotModel({ size = 60 }) {
   return (
     <Canvas style={{ width: size, height: size }}>
@@ -37,7 +35,6 @@ function BotModel({ size = 60 }) {
   );
 }
 
-// --- Chatbot Widget ---
 export default function ChatbotWidget() {
   const [open, setOpen] = useState(false);
   const [speakerOn, setSpeakerOn] = useState(true);
@@ -54,14 +51,12 @@ export default function ChatbotWidget() {
   const containerRef = useRef(null);
   const messagesEndRef = useRef(null);
 
-  // Auto-scroll
   useEffect(() => {
     if (messagesEndRef.current) {
       messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
     }
   }, [messages, loading]);
 
-  // --- Text-to-Speech ---
   const speak = (text) => {
     if (!speakerOn) return;
     if ("speechSynthesis" in window) {
@@ -73,7 +68,6 @@ export default function ChatbotWidget() {
     }
   };
 
-  // --- Time, Weather, News, Crypto helpers ---
   const getCurrentTimeString = () =>
     new Date().toLocaleString("en-IN", {
       timeZone: "Asia/Kolkata",
@@ -145,7 +139,6 @@ export default function ChatbotWidget() {
     }
   }
 
-  // --- Handle user input ---
   const handleSend = async (msg = null) => {
     const text = (msg ?? input).trim();
     if (!text) return;
@@ -176,7 +169,6 @@ export default function ChatbotWidget() {
     speak(reply);
   };
 
-  // --- Voice input ---
   const toggleVoice = () => {
     if (!(window.SpeechRecognition || window.webkitSpeechRecognition)) {
       alert("Voice not supported.");
@@ -199,7 +191,7 @@ export default function ChatbotWidget() {
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
-          className="w-[90vw] sm:w-80 h-[70vh] sm:h-96 bg-black text-white rounded-2xl shadow-lg flex flex-col"
+          className="w-[90vw] sm:w-80 md:w-96 lg:w-[28rem] h-[75vh] sm:h-96 bg-black text-white rounded-2xl shadow-lg flex flex-col"
         >
           {/* Header */}
           <div className="bg-gray-900 px-4 py-2 flex justify-between items-center">
@@ -217,13 +209,16 @@ export default function ChatbotWidget() {
           </div>
 
           {/* Messages */}
-          <div ref={containerRef} className="flex-1 p-3 space-y-2 overflow-y-auto text-sm">
+          <div
+            ref={containerRef}
+            className="flex-1 p-3 space-y-2 overflow-y-auto text-sm break-words"
+          >
             {messages.map((m, i) => (
               <motion.div
                 key={i}
                 initial={{ opacity: 0, x: m.sender === "user" ? 40 : -40 }}
                 animate={{ opacity: 1, x: 0 }}
-                className={`px-3 py-2 rounded-lg max-w-[80%] ${
+                className={`px-3 py-2 rounded-lg max-w-[80%] break-words ${
                   m.sender === "user"
                     ? "ml-auto bg-gray-700 text-white"
                     : "mr-auto bg-gray-300 text-black"
@@ -239,23 +234,28 @@ export default function ChatbotWidget() {
           </div>
 
           {/* Input */}
-          <div className="flex items-center p-2 bg-gray-900 gap-2">
+          <div className="flex flex-col sm:flex-row items-center p-2 bg-white gap-2">
             <input
               value={input}
               onChange={(e) => setInput(e.target.value)}
               onKeyDown={onKeyDown}
               placeholder="Ask me anything..."
-              className="flex-1 px-3 py-1 rounded-lg text-black"
+              className="flex-1 px-3 py-1 rounded-lg border-black text-black w-full sm:w-auto"
             />
-            <button onClick={() => handleSend()} className="bg-blue-500 px-3 py-1 rounded text-white">
-              ➤
-            </button>
-            <button
-              onClick={toggleVoice}
-              className={`px-3 py-1 rounded ${listening ? "bg-red-500" : "bg-green-600"}`}
-            >
-              🎤
-            </button>
+            <div className="flex gap-2 mt-2 sm:mt-0">
+              <button
+                onClick={() => handleSend()}
+                className="bg-blue-500 px-3 py-1 rounded text-white"
+              >
+                ➤
+              </button>
+              <button
+                onClick={toggleVoice}
+                className={`px-3 py-1 rounded ${listening ? "bg-red-500" : "bg-green-600"}`}
+              >
+                🎤
+              </button>
+            </div>
           </div>
         </motion.div>
       )}
@@ -264,10 +264,9 @@ export default function ChatbotWidget() {
       {!open && (
         <button
           onClick={() => setOpen(true)}
-          className="w-16 h-16 rounded-full flex items-center justify-center "
+          className="w-16 h-16 rounded-full flex items-center justify-center shadow-lg"
         >
           <BotModel size={140} />
-          
         </button>
       )}
     </div>
