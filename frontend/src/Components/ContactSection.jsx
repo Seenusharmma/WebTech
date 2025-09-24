@@ -72,146 +72,133 @@ const ContactSection = () => {
   };
 
   return (
-    <div id="contact" className="py-20 bg-white">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-6">
-          <h1 className="text-4xl text-dark font-bold mb-1">Let's Talk</h1>
-          <div className="w-20 h-1 bg-primary mx-auto mb-2"></div>
-          <p className="text-grey-400 text-xl">We'll Love To Work For You</p>
+    <div id="contact" className="py-16 bg-white">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Header */}
+        <div className="text-center mb-10">
+          <h1 className="text-3xl sm:text-4xl text-gray-900 font-bold mb-2">
+            Let's Talk
+          </h1>
+          <div className="w-20 h-1 bg-primary mx-auto mb-3"></div>
+          <p className="text-gray-500 text-base sm:text-lg">
+            We'll Love To Work For You
+          </p>
         </div>
 
-        <div className="flex flex-col md:flex-row items-center justify-between gap-10">
+        {/* Main Container */}
+        <div className="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-16">
           {/* Left Container */}
           <motion.div
-            className="md:w-1/2"
-            initial={{ opacity: 0, x: -50 }}
+            className="w-full lg:w-1/2"
+            initial={{ opacity: 0, x: -40 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
+            transition={{ duration: 0.8 }}
           >
-            {/* Address */}
-            <div className="w-full overflow-hidden px-14 mb-6">
-              <h1 className="text-3xl mb-4 text-dark font-bold">Get In Touch</h1>
-              <div className="flex items-center gap-6">
-                <div className="w-12 h-12 bg-gray-200 text-gray-800 rounded-full flex items-center justify-center text-2xl">
-                  <FaLocationArrow />
-                </div>
-                <div className="mt-4">
-                  <p className="text-xl text-dark font-semibold">Address</p>
-                  <p className="w-60">
-                    751012, Nayapalli, <br />
-                    Bhubaneswar, Odisha, <br />
-                    India
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            {/* Phone */}
-            <div className="w-full overflow-hidden px-14 mb-6">
-              <div className="flex items-center gap-6">
-                <div className="w-12 h-12 bg-gray-200 text-gray-800 rounded-full flex items-center justify-center text-2xl">
-                  <FaPhoneAlt />
-                </div>
-                <div className="mt-4">
-                  <p className="text-xl text-dark font-semibold">Phone</p>
-                  <p className="w-60">+91 77520 67196</p>
-                </div>
-              </div>
-            </div>
-
-            {/* Email */}
-            <div className="w-full overflow-hidden px-14 mb-6">
-              <div className="flex items-center gap-6">
-                <div className="w-12 h-12 bg-gray-200 text-gray-800 rounded-full flex items-center justify-center text-2xl">
-                  <IoIosMail />
-                </div>
-                <div className="mt-4">
-                  <p className="text-xl text-dark font-semibold">Email</p>
-                  <p className="w-60">webuisolution@gmail.com</p>
-                </div>
-              </div>
-            </div>
-
-            {/* Hours */}
-            <div className="w-full overflow-hidden px-14 mb-6">
-              <div className="flex items-center gap-6">
-                <div className="w-12 h-12 bg-gray-200 text-gray-800 rounded-full flex items-center justify-center text-2xl">
-                  <FaClock />
-                </div>
-                <div className="mt-4">
-                  <p className="text-xl text-dark font-semibold">Hours</p>
-                  <p className="w-50">
-                    Monday - Friday: 9:00 AM - 10:00 PM <br />
-                    Saturday: 9:00 AM - 9:00 PM <br />
+            {/* Contact Info Blocks */}
+            {[
+              {
+                icon: <FaLocationArrow />,
+                title: "Address",
+                value: (
+                  <>
+                    751012, Nayapalli, <br /> Bhubaneswar, Odisha, <br /> India
+                  </>
+                ),
+              },
+              {
+                icon: <FaPhoneAlt />,
+                title: "Phone",
+                value: "+91 77520 67196",
+              },
+              {
+                icon: <IoIosMail />,
+                title: "Email",
+                value: "webuisolution@gmail.com",
+              },
+              {
+                icon: <FaClock />,
+                title: "Hours",
+                value: (
+                  <>
+                    Mon - Fri: 9:00 AM - 10:00 PM <br />
+                    Sat: 9:00 AM - 9:00 PM <br />
                     Available
+                  </>
+                ),
+              },
+            ].map((item, idx) => (
+              <div
+                key={idx}
+                className="flex items-start sm:items-center gap-4 bg-gray-50 p-4 rounded-lg shadow-sm mb-5"
+              >
+                <div className="w-12 h-12 bg-gray-200 text-gray-800 rounded-full flex items-center justify-center text-xl shrink-0">
+                  {item.icon}
+                </div>
+                <div>
+                  <p className="text-lg font-semibold text-gray-900">
+                    {item.title}
+                  </p>
+                  <p className="text-gray-600 text-sm sm:text-base">
+                    {item.value}
                   </p>
                 </div>
               </div>
-            </div>
+            ))}
           </motion.div>
 
           {/* Right Container */}
           <motion.div
-            className="md:w-1/2 w-full"
-            initial={{ opacity: 0, x: 50 }}
+            className="w-full lg:w-1/2"
+            initial={{ opacity: 0, x: 40 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
+            transition={{ duration: 0.8 }}
           >
-            <div className="w-full rounded-2xl shadow-xl bg-gray-100 border border-gray-400 overflow-hidden p-8 md:p-10">
-              <h1 className="mb-6 text-2xl md:text-3xl text-gray-900 font-bold">
+            <div className="w-full rounded-xl shadow-lg bg-gray-50 border border-gray-200 p-6 sm:p-8">
+              <h1 className="mb-6 text-2xl sm:text-3xl text-gray-900 font-bold text-center">
                 Contact With Us
               </h1>
+
+              {/* Form */}
               <motion.form
                 onSubmit={handleSubmit}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
-                className="space-y-5"
+                className="space-y-4"
               >
-                {/* Name */}
-                <div className="relative">
-                  <input
-                    type="text"
-                    name="name"
-                    value={form.name}
-                    onChange={handleChange}
-                    placeholder="Your Name"
-                    className="w-full px-4 py-3 rounded-lg border border-gray-500 outline-none transition bg-gray-300"
-                  />
-                </div>
-
-                {/* Email */}
-                <div className="relative">
-                  <input
-                    type="email"
-                    name="email"
-                    value={form.email}
-                    onChange={handleChange}
-                    placeholder="Your Email"
-                    className="w-full px-4 py-3 rounded-lg border border-gray-500 outline-none transition bg-gray-300"
-                  />
-                </div>
-
-                {/* Message */}
-                <div className="relative">
-                  <textarea
-                    name="message"
-                    value={form.message}
-                    onChange={handleChange}
-                    placeholder="Your Message"
-                    rows="5"
-                    className="w-full px-4 py-3 rounded-lg border border-gray-500 outline-none transition resize-none bg-gray-300"
-                  />
-                </div>
+                <input
+                  type="text"
+                  name="name"
+                  value={form.name}
+                  onChange={handleChange}
+                  placeholder="Your Name"
+                  className="w-full px-4 py-3 rounded-lg border border-gray-300 bg-white text-gray-900 placeholder-gray-500 focus:ring-2 focus:ring-primary outline-none"
+                />
+                <input
+                  type="email"
+                  name="email"
+                  value={form.email}
+                  onChange={handleChange}
+                  placeholder="Your Email"
+                  className="w-full px-4 py-3 rounded-lg border border-gray-300 bg-white text-gray-900 placeholder-gray-500 focus:ring-2 focus:ring-primary outline-none"
+                />
+                <textarea
+                  name="message"
+                  value={form.message}
+                  onChange={handleChange}
+                  placeholder="Your Message"
+                  rows="5"
+                  className="w-full px-4 py-3 rounded-lg border border-gray-300 bg-white text-gray-900 placeholder-gray-500 resize-none focus:ring-2 focus:ring-primary outline-none"
+                />
 
                 {/* Buttons */}
-                <div className="flex flex-col md:flex-row gap-4">
+                <div className="flex flex-col sm:flex-row gap-4">
                   <motion.button
                     onClick={handleSendEmail}
                     type="submit"
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className="w-full py-3 rounded-lg bg-gradient-to-r from-gray-600 via-gray-400 to-gray-600 text-white font-semibold shadow-md hover:bg-primary/90 transition"
+                    className="w-full py-3 rounded-lg bg-gradient-to-r from-gray-600 via-gray-500 to-gray-600 text-white font-semibold shadow-md transition"
                   >
                     {submitted ? "Message Ready!" : "Send Message"}
                   </motion.button>
@@ -227,8 +214,6 @@ const ContactSection = () => {
                   </motion.button>
                 </div>
               </motion.form>
-
-              {/* Toast Container */}
               <ToastContainer />
             </div>
           </motion.div>
