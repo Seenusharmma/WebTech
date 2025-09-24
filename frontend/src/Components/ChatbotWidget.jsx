@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 
-const GEMINI_API_KEY = "YOUR_API_KEY";
+const GEMINI_API_KEY = "AIzaSyCTIcW_htPS3aOJO7nkYxUnn3I9Dm6DHgk";
 const GEMINI_ENDPOINT = (key) =>
   `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${key}`;
 
@@ -79,7 +79,7 @@ export default function ChatbotWidget() {
     }
   };
 
-  // --- Helpers ---
+  // --- Helpers (time, weather, news, crypto, Gemini call) ---
   const getCurrentTimeString = () =>
     new Date().toLocaleString("en-IN", {
       timeZone: "Asia/Kolkata",
@@ -91,6 +91,55 @@ export default function ChatbotWidget() {
       minute: "2-digit",
       hour12: true,
     });
+
+  async function getWeather(city = "Delhi") {
+    try {
+      const res = await fetch(
+        `https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(city)}&count=1`
+      );
+      const geo = await res.json();
+      const loc = geo?.results?.[0];
+      const lat = loc?.latitude || 28.61;
+      const lon = loc?.longitude || 77.20;
+      const place = loc ? `${loc.name}, ${loc.country}` : city;
+
+      const weatherRes = await fetch(
+        `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true&timezone=Asia%2FKolkata`
+      );
+      const data = await weatherRes.json();
+      const cw = data.current_weather;
+      return `🌤️ Weather in ${place}: ${cw.temperature}°C, wind ${cw.windspeed} m/s`;
+    } catch {
+      return "⚠️ Weather unavailable.";
+    }
+  }
+
+  async function getNews() {
+    try {
+      const res = await fetch(
+        "https://www.reddit.com/r/worldnews/top.json?limit=3&t=day"
+      );
+      const json = await res.json();
+      return (
+        "📰 Top headlines:\n" +
+        json.data.children.map((c) => `• ${c.data.title}`).join("\n")
+      );
+    } catch {
+      return "⚠️ News unavailable.";
+    }
+  }
+
+  async function getCrypto() {
+    try {
+      const res = await fetch(
+        "https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd"
+      );
+      const json = await res.json();
+      return `💰 Bitcoin: $${json.bitcoin.usd}`;
+    } catch {
+      return "⚠️ Crypto price unavailable.";
+    }
+  }
 
   async function callGemini(prompt) {
     if (!GEMINI_API_KEY) return null;
@@ -115,7 +164,27 @@ export default function ChatbotWidget() {
     setInput("");
     setLoading(true);
 
-    let reply = (await callGemini(text)) || "⚠️ Couldn't fetch an answer.";
+    let reply = "⚠️ Couldn't get an answer.";
+    const lower = text.toLowerCase();
+
+    if (lower.includes("time")) reply = `🕒 ${getCurrentTimeString()}`;
+    else if (lower.includes("weather"))
+      reply = await getWeather(text.split("in ")[1]);
+    else if (lower.includes("news")) reply = await getNews();
+    else if (lower.includes("crypto") || lower.includes("bitcoin"))
+      reply = await getCrypto();
+    else if (lower.includes("future") || lower.includes("predict")) {
+      const summary = `Now: ${getCurrentTimeString()}\n${await getWeather()}\n${await getNews()}\n${await getCrypto()}`;
+      const gReply = await callGemini(
+        `Based on this data: ${summary}, give me present scenario + 3 predictions.`
+      );
+      reply = gReply || summary + "\n🔮 Future uncertain, stay tuned.";
+    } else {
+      reply =
+        (await callGemini(text)) ||
+        "🤖 I can tell you time, weather, news, crypto or predictions.";
+    }
+
     setMessages((p) => [...p, { text: reply, sender: "bot" }]);
     setLoading(false);
     speak(reply);
@@ -144,11 +213,11 @@ export default function ChatbotWidget() {
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
-          className="w-[95vw] max-w-[420px] h-[85vh] sm:h-[600px] bg-black text-white rounded-2xl shadow-lg flex flex-col"
+          className="w-[95vw] sm:w-[420px] h-[85vh] sm:h-[600px] bg-black text-white rounded-2xl shadow-lg flex flex-col"
         >
           {/* Header */}
-          <div className="bg-gray-900 px-4 py-2 flex justify-between items-center">
-            <span className="font-semibold text-sm sm:text-base">AI Chatbot</span>
+          <div className="bg-gray-900 px-4 py-3 flex justify-between items-center text-base sm:text-lg">
+            <span className="font-semibold">AI Chatbot</span>
             <div className="flex items-center gap-2">
               <button
                 onClick={() => setSpeakerOn(!speakerOn)}
@@ -159,7 +228,12 @@ export default function ChatbotWidget() {
               >
                 🔊
               </button>
-              <button onClick={() => setOpen(false)} className="text-lg">✖</button>
+              <button
+                onClick={() => setOpen(false)}
+                className="text-lg sm:text-xl"
+              >
+                ✖
+              </button>
             </div>
           </div>
 
@@ -170,7 +244,7 @@ export default function ChatbotWidget() {
                 key={i}
                 initial={{ opacity: 0, x: m.sender === "user" ? 40 : -40 }}
                 animate={{ opacity: 1, x: 0 }}
-                className={`px-3 py-2 rounded-lg max-w-[85%] break-words ${
+                className={`px-3 py-2 rounded-lg max-w-[85%] sm:max-w-[80%] ${
                   m.sender === "user"
                     ? "ml-auto bg-gray-700 text-white"
                     : "mr-auto bg-gray-300 text-black"
@@ -193,8 +267,8 @@ export default function ChatbotWidget() {
               value={input}
               onChange={(e) => setInput(e.target.value)}
               onKeyDown={onKeyDown}
-              placeholder="Type your message..."
-              className="flex-1 px-3 sm:px-4 py-2 rounded-lg text-white text-sm sm:text-base focus:outline-none"
+              placeholder="Type your question..."
+              className="flex-1 px-3 py-2 rounded-lg text-white text-sm sm:text-base focus:outline-none"
             />
             <button
               onClick={() => handleSend()}
