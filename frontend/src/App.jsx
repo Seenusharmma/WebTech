@@ -31,6 +31,7 @@ const App = () => {
           <Route path='/reviews' element={<Review/>}/>
           <Route path='/contact' element={<Contact/>}/>
           {/* Details page routing */}
+          {/* this is the sub routing for page in services section */}
             <Route path="/figma-designs" element={<FigmaDesigns />} />
             <Route path="/web-development" element={<WebDevelopment />} />
             <Route path="/app-development" element={<AppDevelopment />} />

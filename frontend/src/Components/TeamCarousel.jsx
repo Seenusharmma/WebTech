@@ -32,6 +32,12 @@ const teamMembers = [
     position: "Full-Stack",
     image: "https://i.ibb.co/0pyFKWfr/my-pic.jpg",
   },
+  {
+    id: 5,
+    name: "Mayank Kumar",
+    position: "Operational Mangager",
+    image: "cgu.jpg",
+  },
 ];
 
 export default function TeamCarousel() {
