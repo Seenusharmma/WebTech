@@ -20,7 +20,7 @@ const ContactSection = () => {
 
   const handleSendWhatsApp = () => {
     if (form.name && form.email && form.message) {
-      const phoneNumber = "917752067196";
+      const phoneNumber = "919065895424";
       const message = `Hello, my name is ${form.name}. My email is ${form.email}. Message: ${form.message}`;
       const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(
         message
@@ -72,7 +72,7 @@ const ContactSection = () => {
   };
 
   return (
-    <div id="contact" className="py-16 bg-white">
+    <div id="contact" className="py-20 bg-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-10">
@@ -108,7 +108,7 @@ const ContactSection = () => {
               {
                 icon: <FaPhoneAlt />,
                 title: "Phone",
-                value: "+91 77520 67196",
+                value: "+91 90658 95424",
               },
               {
                 icon: <IoIosMail />,

@@ -72,7 +72,7 @@ const Footer = () => {
                 751012, Nayapalli, <br />
                 Bhubaneswar, Odisha, India
               </li>
-              <li>+91 77520 67196</li>
+              <li>+91 9065895424</li>
               <li>webuisolution@gmail.com</li>
             </ul>
           </motion.div>

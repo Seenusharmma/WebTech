@@ -18,12 +18,6 @@ export default function Testimonials() {
       image: "https://thumbs.dreamstime.com/b/calm-casual-looking-senior-indian-man-face-portrait-white-background-old-man-looking-side-way-calm-casual-looking-senior-185191243.jpg",
     },
     {
-      name: "Mayank Kumar",
-      role: "Founder, CGU Marketplace",
-      text: "Professional, responsive, and highly skilled team. I’d definitely work with them again for future projects.",
-      image: "cgu.jpg",
-    },
-    {
       name: "Ranjit Sharma",
       role: "Founder, MyKart",
       text: "Their development expertise helped us bring our vision to life with great quality and timely delivery.",

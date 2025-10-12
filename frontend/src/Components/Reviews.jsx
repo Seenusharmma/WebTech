@@ -18,11 +18,6 @@ export default function Testimonials() {
       text: "We loved their attention to detail and creative approach. Our Webn App launch was a big success thanks to their work.",
     },
     {
-      name: "Mayank Kumar",
-      role: "Founder, CGU Marketplace",
-      text: "Professional, responsive, and highly skilled team. I’d definitely work with them again for future projects.",
-    },
-    {
       name: "Ranjit Sharma",
       role: "Founder, MyKart",
       text: "Their development expertise helped us bring our vision to life with great quality and timely delivery.",
