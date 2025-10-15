@@ -1,18 +1,57 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { IoMdArrowDropdown } from "react-icons/io";
 
-const Accordian = ({ data }) => {
+const Accordian = ({ data, activeId }) => {
   const [activeItems, setActiveItems] = useState([]);
   const [allowMultiple, setAllowMultiple] = useState(false);
 
-  const toogleItem = (id) => {
+  // 🎧 Read answer aloud using SpeechSynthesis
+  const readAnswer = (text) => {
+    // Stop any current speech first
+    window.speechSynthesis.cancel();
+
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = "en-US";
+    utterance.rate = 1; // normal speed
+    utterance.pitch = 1; // natural pitch
+    window.speechSynthesis.speak(utterance);
+  };
+
+  // Auto-open if voice-recognition activated (from FAQs)
+  useEffect(() => {
+    if (activeId) {
+      setActiveItems((prev) =>
+        allowMultiple
+          ? prev.includes(activeId)
+            ? prev
+            : [...prev, activeId]
+          : [activeId]
+      );
+    }
+  }, [activeId, allowMultiple]);
+
+  // 🧠 When user clicks a question
+  const toggleItem = (id) => {
     setActiveItems((prev) => {
       if (prev.includes(id)) {
         return prev.filter((itemId) => itemId !== id);
       } else {
-        return allowMultiple ? [...prev, id] : [id];
+        const newActive = allowMultiple ? [...prev, id] : [id];
+
+        // 🔊 Read answer when opened
+        const item = data.find((q) => q.id === id);
+        if (item && item.answer) {
+          readAnswer(item.answer);
+        }
+
+        return newActive;
       }
     });
+  };
+
+  const closeAll = () => {
+    window.speechSynthesis.cancel();
+    setActiveItems([]);
   };
 
   return (
@@ -34,8 +73,9 @@ const Accordian = ({ data }) => {
             Allow Multiple Open
           </label>
         </div>
+
         <button
-          onClick={() => setActiveItems([])}
+          onClick={closeAll}
           disabled={activeItems.length === 0}
           className="bg-red-600 text-white px-3 py-2 sm:px-4 sm:py-2 hover:bg-red-700 rounded-md text-sm sm:text-base disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
         >
@@ -51,7 +91,7 @@ const Accordian = ({ data }) => {
             className="border border-gray-400 rounded-lg overflow-hidden shadow-sm"
           >
             <button
-              onClick={() => toogleItem(item.id)}
+              onClick={() => toggleItem(item.id)}
               className={`w-full flex justify-between items-center p-3 sm:p-4 transition-colors duration-300 
                 ${
                   activeItems.includes(item.id)
