@@ -1,23 +1,37 @@
 import React, { useState, useEffect } from "react";
 import { IoMdArrowDropdown } from "react-icons/io";
+import { HiVolumeUp, HiVolumeOff } from "react-icons/hi";
 
 const Accordian = ({ data, activeId }) => {
   const [activeItems, setActiveItems] = useState([]);
   const [allowMultiple, setAllowMultiple] = useState(false);
+  const [speakingId, setSpeakingId] = useState(null); // Track which question is being read
 
   // 🎧 Read answer aloud using SpeechSynthesis
-  const readAnswer = (text) => {
-    // Stop any current speech first
+  const readAnswer = (id, text) => {
+    // If already speaking this one, stop it
+    if (speakingId === id) {
+      window.speechSynthesis.cancel();
+      setSpeakingId(null);
+      return;
+    }
+
+    // Stop any current speech before starting a new one
     window.speechSynthesis.cancel();
 
     const utterance = new SpeechSynthesisUtterance(text);
     utterance.lang = "en-US";
-    utterance.rate = 1; // normal speed
-    utterance.pitch = 1; // natural pitch
+    utterance.rate = 1;
+    utterance.pitch = 1;
+
+    // When speaking ends, reset icon
+    utterance.onend = () => setSpeakingId(null);
+
     window.speechSynthesis.speak(utterance);
+    setSpeakingId(id);
   };
 
-  // Auto-open if voice-recognition activated (from FAQs)
+  // Auto-open from outside if needed
   useEffect(() => {
     if (activeId) {
       setActiveItems((prev) =>
@@ -30,27 +44,20 @@ const Accordian = ({ data, activeId }) => {
     }
   }, [activeId, allowMultiple]);
 
-  // 🧠 When user clicks a question
+  // Toggle question open/close
   const toggleItem = (id) => {
     setActiveItems((prev) => {
       if (prev.includes(id)) {
         return prev.filter((itemId) => itemId !== id);
       } else {
-        const newActive = allowMultiple ? [...prev, id] : [id];
-
-        // 🔊 Read answer when opened
-        const item = data.find((q) => q.id === id);
-        if (item && item.answer) {
-          readAnswer(item.answer);
-        }
-
-        return newActive;
+        return allowMultiple ? [...prev, id] : [id];
       }
     });
   };
 
   const closeAll = () => {
     window.speechSynthesis.cancel();
+    setSpeakingId(null);
     setActiveItems([]);
   };
 
@@ -90,18 +97,30 @@ const Accordian = ({ data, activeId }) => {
             key={item.id}
             className="border border-gray-400 rounded-lg overflow-hidden shadow-sm"
           >
-            <button
-              onClick={() => toggleItem(item.id)}
-              className={`w-full flex justify-between items-center p-3 sm:p-4 transition-colors duration-300 
-                ${
-                  activeItems.includes(item.id)
-                    ? "bg-gray-400 text-gray-900"
-                    : "bg-gray-300 hover:bg-gray-400 text-gray-800"
-                }`}
+            <div
+              className={`w-full flex justify-between items-center p-3 sm:p-4 transition-colors duration-300 ${
+                activeItems.includes(item.id)
+                  ? "bg-gray-400 text-gray-900"
+                  : "bg-gray-300 hover:bg-gray-400 text-gray-800"
+              }`}
             >
-              <span className="font-medium text-sm sm:text-base md:text-lg">
+              {/* Question text (click to toggle) */}
+              <button
+                onClick={() => toggleItem(item.id)}
+                className="flex-1 text-left font-medium text-sm sm:text-base md:text-lg"
+              >
                 {item.question}
-              </span>
+              </button>
+
+              {/* 🔊 Speaker button */}
+              <button
+                onClick={() => readAnswer(item.id, item.answer)}
+                className="ml-3 text-xl sm:text-2xl text-gray-700 hover:text-gray-900 transition"
+              >
+                {speakingId === item.id ? <HiVolumeOff /> : <HiVolumeUp />}
+              </button>
+
+              {/* Dropdown arrow */}
               <span
                 className={`transform transition-transform duration-300 text-lg sm:text-xl ${
                   activeItems.includes(item.id) ? "rotate-180" : ""
@@ -109,9 +128,9 @@ const Accordian = ({ data, activeId }) => {
               >
                 <IoMdArrowDropdown />
               </span>
-            </button>
+            </div>
 
-            {/* Answer */}
+            {/* Answer section */}
             <div
               className={`grid transition-all duration-300 ease-in-out ${
                 activeItems.includes(item.id)
