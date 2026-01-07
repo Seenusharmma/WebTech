@@ -35,7 +35,7 @@ const teamMembers = [
   {
     id: 5,
     name: "Mayank Kumar",
-    position: "Operational Mangager",
+    position: "Operational Manager",
     image: "cgu.jpg",
   },
 ];
