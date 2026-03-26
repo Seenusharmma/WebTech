@@ -38,6 +38,12 @@ const teamMembers = [
     position: "Operational Manager",
     image: "cgu.jpg",
   },
+  {
+    id: 6,
+    name: "Neelmani Tiwary",
+    position: "CEO",
+    image: "nilu.jpeg",
+  },
 ];
 
 export default function TeamCarousel() {
