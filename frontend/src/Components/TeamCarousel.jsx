@@ -32,14 +32,9 @@ const teamMembers = [
     position: "Full-Stack",
     image: "https://i.ibb.co/0pyFKWfr/my-pic.jpg",
   },
+  
   {
     id: 5,
-    name: "Mayank Kumar",
-    position: "Operational Manager",
-    image: "cgu.jpg",
-  },
-  {
-    id: 6,
     name: "Neelmani Tiwary",
     position: "CEO",
     image: "nilu.jpeg",
